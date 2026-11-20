@@ -1,0 +1,12 @@
+{
+  "name": "spinpick",
+  "version": "2.0.0",
+  "private": true,
+  "description": "SpinPick – customizable random picker wheel",
+  "scripts": {
+    "start": "node serve.js",
+    "build": "node build.js",
+    "preview": "node serve.js dist",
+    "deploy": "node build.js && vercel dist --prod"
+  }
+}

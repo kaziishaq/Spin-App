@@ -1,0 +1,1762 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SpinPick – Random Picker Wheel</title>
+  <meta name="description" content="Free spin the wheel random picker. Add names, offers or prizes, customize everything and spin to pick a winner." />
+  <meta name="theme-color" content="#0f1420" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SpinPick – Random Picker Wheel" />
+  <meta property="og:description" content="Add names, offers or prizes, customize everything and spin to pick a winner." />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;800&family=Bangers&family=Bebas+Neue&family=Fredoka:wght@500;700&family=Hind+Siliguri:wght@500;700&family=Montserrat:wght@600;800&family=Noto+Sans+Bengali:wght@500;700&family=Nunito:wght@700;900&family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet" />
+  <style>:root{--bg: #0f1420;--bg2: #161d2d;--card: #1c2436;--line: #2a3550;--text: #e9eef8;--muted: #8f9bb3;--accent: #ff5a36;--pointer: #ff5a36;--danger: #ff4d6d;--shadow: 0 20px 50px rgba(0,0,0,.45);}:root[data-theme="light"]{--bg: #f3f5fa;--bg2: #ffffff;--card: #ffffff;--line: #dde3ee;--text: #1b2333;--muted: #6b7690;--shadow: 0 20px 50px rgba(30,40,70,.18);}*{box-sizing: border-box;}html,body{margin: 0;height: 100%;}body{font-family: "Poppins","Hind Siliguri",system-ui,sans-serif;background: var(--bg);color: var(--text);display: flex;flex-direction: column;}button{font: inherit;cursor: pointer;}.hidden{display: none !important;}[hidden]{display: none !important;}.topbar{display: flex;align-items: center;justify-content: space-between;padding: 10px 20px;background: var(--bg2);border-bottom: 1px solid var(--line);}.brand{display: flex;align-items: center;gap: 8px;font-size: 1.35rem;color: var(--text);text-decoration: none;font-weight: 500;}.brand b{color: var(--accent);font-weight: 700;}.brand-dot{width: 22px;height: 22px;border-radius: 50%;background: conic-gradient(#ff5a36 0 25%,#ffb020 0 50%,#22c55e 0 75%,#3b82f6 0);}.icon-btn{background: transparent;border: 1px solid var(--line);color: var(--text);width: 38px;height: 38px;border-radius: 10px;font-size: 1.05rem;}.icon-btn:hover{border-color: var(--accent);}.layout{flex: 1;display: grid;grid-template-columns: 1fr 390px;min-height: 0;}.stage{position: relative;display: flex;flex-direction: column;align-items: center;justify-content: center;padding: 16px;overflow: hidden;background: radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 62%);}.stage-tools{position: absolute;top: 12px;left: 16px;right: 16px;z-index: 3;display: flex;justify-content: space-between;align-items: center;gap: 8px;}.stage-tools>div{display: flex;gap: 8px;}.stage-tools .icon-btn{background: color-mix(in srgb,var(--bg2) 70%,transparent);}.wheel-title{background: transparent;border: 1px dashed transparent;color: var(--text);font: 600 1.1rem "Poppins","Hind Siliguri",sans-serif;padding: 6px 10px;border-radius: 8px;max-width: 60%;text-shadow: 0 1px 3px rgba(0,0,0,.3);}.wheel-title:hover,.wheel-title:focus{border-color: var(--line);outline: none;}.wheel-wrap{position: relative;width: min(calc(100vh - 190px),100%,640px);aspect-ratio: 1;margin-top: 40px;filter: drop-shadow(var(--shadow));}#wheel{width: 100%;height: 100%;display: block;cursor: pointer;will-change: filter;}.pointer{position: absolute;top: -14px;left: 50%;transform: translateX(-50%);width: 0;height: 0;z-index: 2;transform-origin: 50% 0;border-left: 20px solid transparent;border-right: 20px solid transparent;border-top: 44px solid var(--pointer);filter: drop-shadow(0 4px 4px rgba(0,0,0,.4));}.pointer.tick{animation: tick .1s ease-out;}@keyframes tick{50%{transform: translateX(-50%) rotate(-16deg);}}.hub{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);width: 20%;aspect-ratio: 1;border-radius: 50%;border: 6px solid #fff;background: var(--accent);color: #fff;font-weight: 700;font-size: clamp(.75rem,2.3vw,1.25rem);letter-spacing: 1px;box-shadow: 0 6px 18px rgba(0,0,0,.35),inset 0 -6px 12px rgba(0,0,0,.18);transition: transform .15s;overflow: hidden;white-space: nowrap;padding: 0;}.hub:hover{transform: translate(-50%,-50%) scale(1.06);}.hub:disabled{cursor: wait;}.hint{color: var(--muted);font-size: .85rem;margin: 18px 0 0;text-align: center;}kbd{background: var(--card);border: 1px solid var(--line);border-radius: 4px;padding: 1px 6px;font-size: .78rem;}.wheel-wrap.shake{animation: shake .55s cubic-bezier(.36,.07,.19,.97);}@keyframes shake{10%{transform: translate(-6px,3px) scale(1.04);}20%{transform: translate(7px,-4px) scale(1.05);}30%{transform: translate(-7px,-3px) scale(1.04);}45%{transform: translate(5px,4px) scale(1.03);}60%{transform: translate(-4px,2px) scale(1.02);}80%{transform: translate(2px,-1px) scale(1.01);}}#flash{position: fixed;inset: 0;pointer-events: none;z-index: 45;opacity: 0;background: radial-gradient(circle at 50% 50%,rgba(255,255,255,.95),var(--flash,#fff) 25%,transparent 70%);}#flash.on{animation: flash .7s ease-out;}@keyframes flash{0%{opacity: .9;}100%{opacity: 0;}}.panel{background: var(--bg2);border-left: 1px solid var(--line);display: flex;flex-direction: column;min-height: 0;}.tabs{display: flex;border-bottom: 1px solid var(--line);}.tab{flex: 1;background: none;border: none;color: var(--muted);padding: 14px 6px;font-weight: 600;font-size: .92rem;border-bottom: 2px solid transparent;}.tab.active{color: var(--text);border-bottom-color: var(--accent);}.badge{background: var(--accent);color: #fff;border-radius: 999px;padding: 1px 8px;font-size: .72rem;margin-left: 4px;}.tab-body{padding: 14px;display: flex;flex-direction: column;gap: 12px;overflow-y: auto;flex: 1;}.toolbar{display: flex;flex-wrap: wrap;gap: 6px;}.chip{background: var(--card);color: var(--text);border: 1px solid var(--line);border-radius: 8px;padding: 6px 10px;font-size: .82rem;}.chip:hover{border-color: var(--accent);}.chip.danger:hover{border-color: var(--danger);color: var(--danger);}textarea{width: 100%;min-height: 260px;resize: vertical;background: var(--card);color: var(--text);border: 1px solid var(--line);border-radius: 10px;padding: 12px;font: 400 .95rem/1.6 "Poppins","Hind Siliguri",sans-serif;}textarea:focus{outline: none;border-color: var(--accent);}.section{border: 1px solid var(--line);border-radius: 10px;padding: 10px 12px;background: var(--card);}.section summary{cursor: pointer;font-weight: 600;font-size: .85rem;letter-spacing: .3px;color: var(--muted);}.section[open] summary{margin-bottom: 8px;color: var(--text);}.presets{display: flex;flex-wrap: wrap;gap: 6px;}.palettes{display: grid;grid-template-columns: repeat(3,1fr);gap: 8px;margin-bottom: 10px;}.palette{display: flex;height: 28px;border-radius: 8px;overflow: hidden;border: 2px solid transparent;padding: 0;position: relative;}.palette span{flex: 1;}.palette.active{border-color: var(--text);box-shadow: 0 0 0 2px var(--accent);}.palette-label{font-size: .75rem;color: var(--muted);margin: 4px 0 6px;}.swatches{display: flex;flex-wrap: wrap;gap: 6px;align-items: center;}.swatch{position: relative;}.swatch-x{position: absolute;top: -6px;right: -6px;width: 16px;height: 16px;border-radius: 50%;border: none;background: var(--danger);color: #fff;font-size: 11px;line-height: 16px;padding: 0;}.row{display: flex;justify-content: space-between;align-items: center;gap: 10px;padding: 7px 0;font-size: .88rem;border-top: 1px dashed var(--line);}.row:first-of-type{border-top: none;}.row>label{flex: 1;}.row .ctrl{display: flex;align-items: center;gap: 6px;}.row output{min-width: 42px;text-align: right;font-variant-numeric: tabular-nums;color: var(--muted);font-size: .8rem;}.row input[type="range"]{width: 120px;}.row input[type="text"],.row select{background: var(--bg2);color: var(--text);border: 1px solid var(--line);border-radius: 8px;padding: 6px 8px;font: inherit;font-size: .85rem;max-width: 170px;}.row input[type="text"]:focus,.row select:focus{outline: none;border-color: var(--accent);}input[type="color"]{width: 38px;height: 28px;padding: 0;border: 1px solid var(--line);border-radius: 6px;background: none;cursor: pointer;}input[type="color"]::-webkit-color-swatch-wrapper{padding: 2px;}input[type="color"]::-webkit-color-swatch{border: none;border-radius: 4px;}input[type="checkbox"],input[type="range"]{accent-color: var(--accent);}input[type="checkbox"]{width: 18px;height: 18px;cursor: pointer;}.row small{color: var(--muted);}.results{margin: 0;padding-left: 26px;display: flex;flex-direction: column;gap: 6px;}.results li{background: var(--card);border: 1px solid var(--line);border-radius: 8px;padding: 8px 12px;}.results li small{color: var(--muted);float: right;}.empty{color: var(--muted);text-align: center;}.modal{position: fixed;inset: 0;background: rgba(5,8,15,.55);backdrop-filter: blur(3px);display: grid;place-items: center;z-index: 50;padding: 16px;}.modal-card{background: var(--card);border-radius: 18px;padding: 28px 28px 22px;width: min(480px,100%);text-align: center;box-shadow: var(--shadow);border-top: 8px solid var(--accent);animation: pop .45s cubic-bezier(.2,1.5,.4,1);}@keyframes pop{from{transform: scale(.6);opacity: 0;}}.modal-label{margin: 0;color: var(--muted);font-weight: 500;}.modal-card h2{font-size: clamp(1.7rem,6vw,2.8rem);margin: 10px 0 22px;word-break: break-word;}.modal-actions{display: flex;gap: 8px;justify-content: center;flex-wrap: wrap;}.btn{border-radius: 10px;padding: 10px 18px;font-weight: 600;border: 1px solid var(--line);}.btn.ghost{background: transparent;color: var(--text);}.btn.primary{background: var(--accent);color: #fff;border-color: var(--accent);}.toast{position: fixed;bottom: 24px;left: 50%;transform: translateX(-50%);background: var(--text);color: var(--bg);padding: 10px 18px;border-radius: 10px;z-index: 60;font-weight: 500;}#confetti{position: fixed;inset: 0;pointer-events: none;z-index: 55;width: 100%;height: 100%;}.stage:fullscreen .wheel-wrap{width: min(calc(100vh - 120px),95vw);}.top-actions{display: flex;gap: 8px;}.lang-btn{background: var(--card);color: var(--text);border: 1px solid var(--line);border-radius: 10px;padding: 0 12px;height: 38px;font-weight: 600;font-family: "Hind Siliguri","Poppins",sans-serif;}.lang-btn:hover{border-color: var(--accent);}.title-box{display: flex;align-items: center;gap: 8px;min-width: 0;flex: 1;}.title-box .wheel-title{max-width: 100%;min-width: 0;flex: 1;}.stage-logo{height: 40px;max-width: 120px;object-fit: contain;border-radius: 6px;}.hub.has-logo{background-size: contain;background-repeat: no-repeat;background-position: center;background-origin: content-box;padding: 12%;color: transparent;}.row.stack{flex-direction: column;align-items: stretch;gap: 6px;}.row.stack .ctrl{width: 100%;}textarea.small-ta{min-height: 70px;font-size: .85rem;padding: 8px 10px;background: var(--bg2);}.count-row{display: flex;align-items: center;justify-content: space-between;gap: 10px;font-size: .9rem;}.stepper{display: flex;align-items: center;gap: 6px;}.stepper .chip{width: 38px;font-size: 1.1rem;padding: 4px 0;}#countInput{width: 64px;text-align: center;background: var(--card);color: var(--text);border: 1px solid var(--line);border-radius: 8px;padding: 6px;font: inherit;}#countInput:focus{outline: none;border-color: var(--accent);}.lead-form{display: flex;flex-direction: column;gap: 10px;text-align: left;margin: 4px 0 14px;}.lead-form h3{margin: 0 0 4px;text-align: center;font-size: 1.05rem;}.field{display: flex;flex-direction: column;gap: 5px;font-size: .85rem;color: var(--muted);}.field input,.field textarea{background: var(--bg2);color: var(--text);border: 1px solid var(--line);border-radius: 10px;padding: 11px 12px;font: inherit;font-size: 1rem;}.field input:focus{outline: none;border-color: var(--accent);}.consent{display: flex;gap: 10px;align-items: flex-start;font-size: .82rem;line-height: 1.45;cursor: pointer;}.consent input{flex: none;margin-top: 2px;}.form-error{color: var(--danger);font-size: .85rem;margin: 0;min-height: 1.1em;}.lead-thanks{color: #22c55e;font-weight: 600;margin: 0 0 14px;}.btn.wa{background: #25d366;color: #fff;border-color: #25d366;text-decoration: none;display: inline-flex;align-items: center;justify-content: center;}.leads{list-style: none;margin: 8px 0 0;padding: 0;display: flex;flex-direction: column;gap: 6px;}.leads li{background: var(--bg2);border: 1px solid var(--line);border-radius: 8px;padding: 8px 10px;font-size: .85rem;}.leads li small{display: block;color: var(--muted);}.note{color: var(--muted);font-size: .8rem;margin: 4px 0 8px;line-height: 1.45;}.modal-card.left{text-align: left;display: flex;flex-direction: column;gap: 10px;border-top-color: var(--accent);}.modal-card.left h3{margin: 0 0 4px;}.modal-card.left .chip{align-self: flex-start;}textarea.code{min-height: 110px;font: .78rem/1.5 ui-monospace,Consolas,monospace;resize: none;}body.embed .topbar,body.embed .panel,body.embed .hint,body.embed .mobile-bar{display: none !important;}body.embed{padding-bottom: 0 !important;}body.embed .layout{grid-template-columns: 1fr;}body.embed .wheel-wrap{width: min(calc(100vh - 80px),100%,640px);margin-top: 36px;}.mobile-bar{display: none;}@media (max-width: 900px){body{padding-bottom: calc(80px + env(safe-area-inset-bottom));}.layout{grid-template-columns: 1fr;}.panel{border-left: none;border-top: 1px solid var(--line);}.stage{padding-top: 60px;}.wheel-wrap{width: min(92vw,520px);margin-top: 0;}textarea{min-height: 180px;}.hint{display: none;}.mobile-bar{display: flex;gap: 10px;position: fixed;left: 0;right: 0;bottom: 0;z-index: 30;padding: 10px 14px calc(10px + env(safe-area-inset-bottom));background: color-mix(in srgb,var(--bg2) 92%,transparent);backdrop-filter: blur(8px);border-top: 1px solid var(--line);}.mobile-spin{flex: 1;height: 58px;border: none;border-radius: 16px;background: var(--accent);color: #fff;font-weight: 700;font-size: 1.25rem;letter-spacing: 1px;box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 45%,transparent);}.mobile-spin:disabled{opacity: .7;}.mobile-bar .icon-btn{width: 58px;height: 58px;border-radius: 16px;font-size: 1.3rem;background: var(--card);}.chip{min-height: 42px;padding: 8px 14px;font-size: .9rem;}.stepper .chip{width: 46px;}#countInput{height: 42px;}.tab{padding: 16px 6px;font-size: .95rem;}.row{padding: 10px 0;}.row input[type="range"]{width: 130px;}input[type="checkbox"]{width: 22px;height: 22px;}input[type="color"]{width: 46px;height: 34px;}textarea,#countInput,.row input[type="text"],.row select,.field input{font-size: 16px;}.modal{place-items: end center;padding: 0;}.modal-card{width: 100%;max-height: 92vh;overflow-y: auto;border-radius: 22px 22px 0 0;padding-bottom: calc(22px + env(safe-area-inset-bottom));animation: sheet .35s ease-out;}.modal-actions{flex-direction: column;}.modal-actions .btn{width: 100%;min-height: 52px;font-size: 1rem;}}@keyframes sheet{from{transform: translateY(100%);}}</style>
+  <script>
+    /* Site owner settings. leadWebhook: an https URL that receives WhatsApp leads as JSON (POST).
+       It is set here and not in share links, so nobody else can redirect your leads. */
+    window.SPINPICK_CONFIG = { leadWebhook: "" };
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">
+      <span class="brand-dot"></span><span>Spin<b>Pick</b></span>
+    </a>
+    <div class="top-actions">
+      <button class="lang-btn" id="langBtn" title="বাংলা / English">বাংলা</button>
+      <button class="icon-btn" id="themeBtn" data-i18n-title="themeTitle" title="Light / dark mode">◐</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage" id="stage">
+      <div class="stage-tools">
+        <div class="title-box">
+          <img id="stageLogo" class="stage-logo" alt="" hidden />
+          <input id="wheelTitle" class="wheel-title" maxlength="40" aria-label="Wheel title" />
+        </div>
+        <div>
+          <button class="icon-btn" id="soundBtn" data-i18n-title="soundTitle" title="Sound on / off">🔊</button>
+          <button class="icon-btn" id="fullBtn" data-i18n-title="fullTitle" title="Fullscreen">⛶</button>
+        </div>
+      </div>
+
+      <div class="wheel-wrap" id="wheelWrap">
+        <div class="pointer" id="pointer"></div>
+        <canvas id="wheel" width="1000" height="1000" aria-label="Spinning wheel"></canvas>
+        <button class="hub" id="spinBtn" aria-label="Spin">SPIN</button>
+      </div>
+      <p class="hint" data-i18n-html="hint"></p>
+    </section>
+
+    <aside class="panel" id="panel">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="entries"><span data-i18n="tabEntries">Entries</span> <span class="badge" id="entryCount">0</span></button>
+        <button class="tab" data-tab="customize"><span data-i18n="tabCustomize">Customize</span></button>
+        <button class="tab" data-tab="results"><span data-i18n="tabResults">Results</span> <span class="badge" id="resultCount">0</span></button>
+      </div>
+
+      <div class="tab-body" id="tab-entries">
+        <div class="toolbar">
+          <button class="chip" id="shuffleBtn">⤮ <span data-i18n="shuffle">Shuffle</span></button>
+          <button class="chip" id="sortBtn">↕ <span data-i18n="sort">Sort</span></button>
+          <button class="chip" id="uniqueBtn">◎ <span data-i18n="unique">Unique</span></button>
+          <button class="chip" id="shareBtn">🔗 <span data-i18n="share">Share</span></button>
+          <button class="chip" id="embedBtn">&lt;/&gt; <span data-i18n="embed">Embed</span></button>
+          <button class="chip danger" id="clearBtn">✕ <span data-i18n="clear">Clear</span></button>
+        </div>
+        <div class="count-row">
+          <span data-i18n="itemCount">Number of items</span>
+          <div class="stepper">
+            <button class="chip" id="countMinus" aria-label="−">−</button>
+            <input id="countInput" type="number" min="0" max="500" inputmode="numeric" aria-label="Number of items" />
+            <button class="chip" id="countPlus" aria-label="+">+</button>
+          </div>
+        </div>
+        <textarea id="entries" spellcheck="false" data-i18n-ph="entriesPh"></textarea>
+        <details class="section" open>
+          <summary data-i18n="presets">Presets</summary>
+          <div class="presets" id="presets"></div>
+        </details>
+      </div>
+
+      <div class="tab-body hidden" id="tab-customize"></div>
+
+      <div class="tab-body hidden" id="tab-results">
+        <div class="toolbar">
+          <button class="chip" id="copyResultsBtn">⧉ <span data-i18n="copy">Copy</span></button>
+          <button class="chip danger" id="clearResultsBtn">✕ <span data-i18n="clear">Clear</span></button>
+        </div>
+        <ol class="results" id="results"></ol>
+        <p class="empty" id="resultsEmpty" data-i18n="noSpins">No spins yet.</p>
+
+        <details class="section" id="leadsSection" open>
+          <summary><span data-i18n="leads">WhatsApp leads</span> (<span id="leadCount">0</span>)</summary>
+          <p class="note" data-i18n="leadsNote"></p>
+          <div class="toolbar">
+            <button class="chip" id="exportLeadsBtn">⬇ <span data-i18n="exportCsv">Export CSV</span></button>
+            <button class="chip danger" id="clearLeadsBtn">✕ <span data-i18n="clear">Clear</span></button>
+          </div>
+          <ul class="leads" id="leadsList"></ul>
+          <p class="empty" id="leadsEmpty" data-i18n="noLeads"></p>
+        </details>
+      </div>
+    </aside>
+  </main>
+
+  <!-- mobile one-hand bar -->
+  <nav class="mobile-bar" id="mobileBar">
+    <button class="icon-btn" id="mSound" data-i18n-title="soundTitle">🔊</button>
+    <button class="mobile-spin" id="mSpin">SPIN</button>
+    <button class="icon-btn" id="mEdit" data-i18n-title="editTitle">✏️</button>
+  </nav>
+
+  <!-- winner -->
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="winnerName">
+    <div class="modal-card" id="modalCard">
+      <p class="modal-label" id="winLabel"></p>
+      <h2 id="winnerName">—</h2>
+      <div id="winLeadSlot"></div>
+      <p class="lead-thanks hidden" id="leadThanks"></p>
+      <div class="modal-actions">
+        <button class="btn ghost" id="closeModal" data-i18n="close">Close</button>
+        <button class="btn ghost" id="removeWinner" data-i18n="remove">Remove</button>
+        <a class="btn wa hidden" id="claimBtn" target="_blank" rel="noopener" data-i18n="claim">Claim on WhatsApp</a>
+        <button class="btn primary" id="spinAgain" data-i18n="spinAgain">Spin again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp lead form (moved between the lead modal and the winner modal) -->
+  <div class="modal hidden" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+    <div class="modal-card" id="leadCard">
+      <form id="leadForm" class="lead-form" novalidate>
+        <h3 id="leadTitle"></h3>
+        <label class="field" id="leadNameField"><span data-i18n="leadName">Name (optional)</span>
+          <input id="leadName" type="text" autocomplete="name" maxlength="60" />
+        </label>
+        <label class="field"><span data-i18n="leadPhone">WhatsApp number</span>
+          <input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="01XXXXXXXXX" />
+        </label>
+        <label class="consent"><input type="checkbox" id="leadConsent" /><span id="leadConsentText"></span></label>
+        <p class="form-error" id="leadError" role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn ghost" id="leadCancel"></button>
+          <button type="submit" class="btn primary" id="leadSubmit"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- share & embed -->
+  <div class="modal hidden" id="embedModal" role="dialog" aria-modal="true" aria-labelledby="embedTitle">
+    <div class="modal-card left">
+      <h3 id="embedTitle" data-i18n="embedTitle">Share &amp; embed</h3>
+      <label class="field"><span data-i18n="shareLink">Share link</span>
+        <input id="shareUrl" type="text" readonly />
+      </label>
+      <button class="chip" id="copyShare">⧉ <span data-i18n="copyLink">Copy link</span></button>
+      <label class="field"><span data-i18n="embedCode">Embed code (paste into your website HTML)</span>
+        <textarea id="embedCode" class="code" readonly></textarea>
+      </label>
+      <button class="chip" id="copyEmbed">⧉ <span data-i18n="copyCode">Copy code</span></button>
+      <p class="note" data-i18n="embedNote"></p>
+      <div class="modal-actions"><button class="btn primary" id="embedClose" data-i18n="close">Close</button></div>
+    </div>
+  </div>
+
+  <div id="flash"></div>
+  <canvas id="confetti"></canvas>
+  <div class="toast hidden" id="toast"></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden />
+
+  <script>
+/* SpinPick – random picker wheel */
+(() => {
+  "use strict";
+
+  const $ = (id) => document.getElementById(id);
+  const canvas = $("wheel");
+  const ctx = canvas.getContext("2d");
+  const TAU = Math.PI * 2;
+  const POINTER_ANGLE = Math.PI * 1.5; // top of the wheel
+  const STORE_KEY = "spinpick.v2";
+  const MAX_FILE = 1.5 * 1024 * 1024;
+  const FILE_KEYS = ["bgImage", "customTick", "customWin", "logo"];
+  const PRIVATE_KEYS = [...FILE_KEYS, "leadWebhook"]; // never put into share / embed links
+  const EMBED = new URLSearchParams(location.search).has("embed");
+  const CONFIG = window.SPINPICK_CONFIG || {};
+  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- Languages ----------
+  const I18N = {
+    en: {
+      themeTitle: "Light / dark mode", soundTitle: "Sound on / off", fullTitle: "Fullscreen", editTitle: "Edit entries",
+      hint: "Click the wheel, press <kbd>Space</kbd> or <kbd>Ctrl</kbd> + <kbd>Enter</kbd>",
+      tabEntries: "Entries", tabCustomize: "Customize", tabResults: "Results",
+      shuffle: "Shuffle", sort: "Sort", unique: "Unique", share: "Share", embed: "Embed", clear: "Clear", copy: "Copy",
+      itemCount: "Number of items", entriesPh: "Type one item per line (names, offers, prizes)…", presets: "Presets",
+      noSpins: "No spins yet.", leads: "WhatsApp leads", exportCsv: "Export CSV", noLeads: "No numbers collected yet.",
+      leadsNote: "Numbers are saved in this browser only. To receive them online, set a webhook URL.",
+      close: "Close", remove: "Remove", claim: "Claim on WhatsApp", spinAgain: "Spin again",
+      leadName: "Name (optional)", leadPhone: "WhatsApp number",
+      leadTitleBefore: "Enter your WhatsApp number to spin", leadTitleAfter: "Enter your WhatsApp number to claim your prize",
+      consentDefault: "I agree that my WhatsApp number may be used to contact me about this result and related offers.",
+      submitSpin: "Submit & spin", submit: "Submit", cancel: "Cancel", skip: "Skip",
+      errPhone: "Please enter a valid WhatsApp number.", errConsent: "Please tick the consent box.", errUsed: "This number has already spun.",
+      thanks: "Thanks! Your number has been saved.",
+      embedTitle: "Share & embed", shareLink: "Share link", copyLink: "Copy link",
+      embedCode: "Embed code (paste into your website HTML)", copyCode: "Copy code",
+      embedNote: "Uploaded logo, background and sounds aren't included in links. For a logo, use the Logo URL option.",
+      myWheel: "My Wheel", spin: "SPIN", winMsgDefault: "🎉 We have a winner!", item: "Item", addEntries: "Add entries",
+      claimText: "Hi! I won \"{prize}\" on the {wheel} wheel.",
+      tAddOne: "Add at least one item", tStorage: "Browser storage is full – use smaller image/sound files",
+      tTooLarge: "File too large – max 1.5 MB", tUploaded: "Uploaded!", tKeep2: "Keep at least 2 colors",
+      tDupes: "Removed {n} duplicate(s)", tLinkCopied: "Link copied!", tCodeCopied: "Embed code copied!", tResultsCopied: "Results copied!",
+      tImported: "Wheel imported!", tBadFile: "That file is not a valid wheel", tReset: "Design reset",
+      cClear: "Clear all items?", cReset: "Reset all design, spin and sound settings to default? Your items stay.",
+      cClearLeads: "Delete all collected numbers from this browser?",
+      // customize
+      secColors: "🎨 Slice colors", customColorsHint: "Your own colors (click a color to edit):", addColor: "+ Add color",
+      secWheel: "🎡 Wheel & text", font: "Font", textSize: "Text size", autoText: "Auto text color", textColor: "Text color",
+      borderWidth: "Border width", borderColor: "Border color", dividers: "Slice lines", pegs: "Pegs", pegColor: "Peg color",
+      pointerColor: "Pointer color", centerText: "Center button text", centerColor: "Center button color", centerTextColor: "Center text color",
+      secLogo: "🏷️ Logo & brand", logo: "Upload logo", logoUrl: "Logo URL (works in share/embed)", logoPlace: "Logo position",
+      center: "Wheel center", top: "Top corner", both: "Both",
+      secBg: "🖼️ Background & theme", accent: "Accent color", bgType: "Background", glow: "Glow", color: "Solid color",
+      gradient: "Gradient", image: "Image", bgColor: "Color 1", bgColor2: "Color 2", bgImage: "Background image",
+      secSpin: "🌀 Spin motion", turns: "Full turns", duration: "Spin time", easing: "Motion curve", smooth: "Smooth",
+      dramatic: "Dramatic slow finish", quick: "Fast start", windup: "Wind-up", custom: "Custom cubic-bezier",
+      customBezier: "cubic-bezier( )", motionBlur: "Motion blur",
+      secSound: "🔊 Sound", volume: "Volume", tickStyle: "Tick sound", wood: "Wood click", click: "Sharp click", pop: "Pop",
+      bell: "Bell", off: "Off", winStyle: "Win sound", boom: "BOOM + celebration", fanfare: "Fanfare", applause: "Applause",
+      arcade: "Arcade", whoosh: "Spin whoosh", customTick: "Your own tick sound", customWin: "Your own win sound",
+      testTick: "▶ Test tick", testWin: "▶ Test win",
+      secWinner: "🏆 Result & animation", winMessage: "Popup message", showPopup: "Show result popup",
+      confetti: "Confetti & fireworks", confettiAmount: "Confetti amount", flash: "Boom flash", shake: "Wheel shake",
+      autoRemove: "Remove winner after spin",
+      secLeads: "📱 WhatsApp & leads", leadMode: "Collect WhatsApp number", leadOff: "Off", leadBefore: "Before spin",
+      leadAfter: "With the result", leadAskName: "Ask for name", leadTitle: "Form heading", consentText: "Consent text",
+      defaultCountry: "Country code", onePerNumber: "One spin per number", waNumber: "Your WhatsApp (for prize claims)",
+      leadWebhook: "Webhook URL (optional)",
+      secData: "💾 Save, load & reset", exportWheel: "⬇ Export wheel", importWheel: "⬆ Import wheel", resetDesign: "↺ Reset design",
+      none: "None", customSet: "Custom ✓", upload: "Upload",
+    },
+    bn: {
+      themeTitle: "লাইট / ডার্ক মোড", soundTitle: "শব্দ চালু / বন্ধ", fullTitle: "ফুলস্ক্রিন", editTitle: "আইটেম এডিট করুন",
+      hint: "চাকায় ক্লিক করুন, অথবা <kbd>Space</kbd> বা <kbd>Ctrl</kbd> + <kbd>Enter</kbd> চাপুন",
+      tabEntries: "আইটেম", tabCustomize: "কাস্টমাইজ", tabResults: "ফলাফল",
+      shuffle: "এলোমেলো", sort: "সাজান", unique: "ডুপ্লিকেট বাদ", share: "শেয়ার", embed: "এমবেড", clear: "মুছুন", copy: "কপি",
+      itemCount: "আইটেমের সংখ্যা", entriesPh: "প্রতি লাইনে একটি আইটেম লিখুন (নাম, অফার, পুরস্কার)…", presets: "প্রিসেট",
+      noSpins: "এখনো কোনো স্পিন হয়নি।", leads: "হোয়াটসঅ্যাপ লিড", exportCsv: "CSV ডাউনলোড", noLeads: "এখনো কোনো নম্বর জমা হয়নি।",
+      leadsNote: "নম্বরগুলো শুধু এই ব্রাউজারে সেভ থাকে। অনলাইনে পেতে ওয়েবহুক URL সেট করুন।",
+      close: "বন্ধ করুন", remove: "বাদ দিন", claim: "হোয়াটসঅ্যাপে ক্লেইম করুন", spinAgain: "আবার স্পিন",
+      leadName: "নাম (ঐচ্ছিক)", leadPhone: "হোয়াটসঅ্যাপ নম্বর",
+      leadTitleBefore: "স্পিন করতে আপনার হোয়াটসঅ্যাপ নম্বর দিন", leadTitleAfter: "পুরস্কার পেতে আপনার হোয়াটসঅ্যাপ নম্বর দিন",
+      consentDefault: "আমি সম্মতি দিচ্ছি যে এই ফলাফল ও সংশ্লিষ্ট অফার জানাতে আমার হোয়াটসঅ্যাপ নম্বরে যোগাযোগ করা যাবে।",
+      submitSpin: "জমা দিন ও স্পিন করুন", submit: "জমা দিন", cancel: "বাতিল", skip: "এড়িয়ে যান",
+      errPhone: "সঠিক হোয়াটসঅ্যাপ নম্বর দিন।", errConsent: "সম্মতির বক্সে টিক দিন।", errUsed: "এই নম্বর দিয়ে আগেই স্পিন করা হয়েছে।",
+      thanks: "ধন্যবাদ! আপনার নম্বর জমা হয়েছে।",
+      embedTitle: "শেয়ার ও এমবেড", shareLink: "শেয়ার লিংক", copyLink: "লিংক কপি করুন",
+      embedCode: "এমবেড কোড (আপনার ওয়েবসাইটের HTML-এ বসান)", copyCode: "কোড কপি করুন",
+      embedNote: "আপলোড করা লোগো, ব্যাকগ্রাউন্ড ও শব্দ লিংকে যায় না। লোগোর জন্য 'লোগোর লিংক' অপশন ব্যবহার করুন।",
+      myWheel: "আমার চাকা", spin: "স্পিন", winMsgDefault: "🎉 অভিনন্দন! বিজয়ী হলো", item: "আইটেম", addEntries: "আইটেম যোগ করুন",
+      claimText: "হ্যালো! আমি {wheel} চাকায় \"{prize}\" জিতেছি।",
+      tAddOne: "অন্তত একটি আইটেম যোগ করুন", tStorage: "ব্রাউজারের জায়গা শেষ – ছোট ছবি/শব্দ ফাইল ব্যবহার করুন",
+      tTooLarge: "ফাইল অনেক বড় – সর্বোচ্চ ১.৫ MB", tUploaded: "আপলোড হয়েছে!", tKeep2: "অন্তত ২টি রং রাখুন",
+      tDupes: "{n}টি ডুপ্লিকেট বাদ দেওয়া হয়েছে", tLinkCopied: "লিংক কপি হয়েছে!", tCodeCopied: "এমবেড কোড কপি হয়েছে!",
+      tResultsCopied: "ফলাফল কপি হয়েছে!", tImported: "চাকা ইমপোর্ট হয়েছে!", tBadFile: "এটি সঠিক চাকার ফাইল নয়", tReset: "ডিজাইন রিসেট হয়েছে",
+      cClear: "সব আইটেম মুছে ফেলবেন?", cReset: "সব ডিজাইন, স্পিন ও শব্দের সেটিং আগের মতো করবেন? আইটেমগুলো থাকবে।",
+      cClearLeads: "এই ব্রাউজার থেকে জমা হওয়া সব নম্বর মুছে ফেলবেন?",
+      secColors: "🎨 স্লাইসের রং", customColorsHint: "নিজের রং (এডিট করতে রঙে ক্লিক করুন):", addColor: "+ রং যোগ করুন",
+      secWheel: "🎡 চাকা ও লেখা", font: "ফন্ট", textSize: "লেখার সাইজ", autoText: "অটো লেখার রং", textColor: "লেখার রং",
+      borderWidth: "বর্ডারের পুরুত্ব", borderColor: "বর্ডারের রং", dividers: "স্লাইসের দাগ", pegs: "পিন", pegColor: "পিনের রং",
+      pointerColor: "পয়েন্টারের রং", centerText: "মাঝের বাটনের লেখা", centerColor: "মাঝের বাটনের রং", centerTextColor: "মাঝের লেখার রং",
+      secLogo: "🏷️ লোগো ও ব্র্যান্ড", logo: "লোগো আপলোড", logoUrl: "লোগোর লিংক (শেয়ার/এমবেডে কাজ করে)", logoPlace: "লোগোর জায়গা",
+      center: "চাকার মাঝে", top: "উপরের কোণে", both: "দুই জায়গায়",
+      secBg: "🖼️ ব্যাকগ্রাউন্ড ও থিম", accent: "মূল রং", bgType: "ব্যাকগ্রাউন্ড", glow: "গ্লো", color: "এক রং",
+      gradient: "গ্রেডিয়েন্ট", image: "ছবি", bgColor: "রং ১", bgColor2: "রং ২", bgImage: "ব্যাকগ্রাউন্ড ছবি",
+      secSpin: "🌀 স্পিন", turns: "কত পাক ঘুরবে", duration: "স্পিনের সময়", easing: "গতির ধরন", smooth: "মসৃণ",
+      dramatic: "নাটকীয় ধীর থামা", quick: "দ্রুত শুরু", windup: "আস্তে শুরু", custom: "নিজের cubic-bezier",
+      customBezier: "cubic-bezier( )", motionBlur: "মোশন ব্লার",
+      secSound: "🔊 শব্দ", volume: "ভলিউম", tickStyle: "টিক শব্দ", wood: "কাঠের টিক", click: "তীক্ষ্ণ ক্লিক", pop: "পপ",
+      bell: "ঘণ্টা", off: "বন্ধ", winStyle: "জেতার শব্দ", boom: "বুম + উৎসব", fanfare: "ফ্যানফেয়ার", applause: "হাততালি",
+      arcade: "আর্কেড", whoosh: "স্পিনের হুশ শব্দ", customTick: "নিজের টিক শব্দ", customWin: "নিজের জেতার শব্দ",
+      testTick: "▶ টিক শুনুন", testWin: "▶ জেতার শব্দ শুনুন",
+      secWinner: "🏆 ফলাফল ও অ্যানিমেশন", winMessage: "পপআপ বার্তা", showPopup: "ফলাফলের পপআপ দেখান",
+      confetti: "কনফেটি ও আতশবাজি", confettiAmount: "কনফেটির পরিমাণ", flash: "বুম ফ্ল্যাশ", shake: "চাকা কাঁপানো",
+      autoRemove: "স্পিনের পর বিজয়ী বাদ দিন",
+      secLeads: "📱 হোয়াটসঅ্যাপ ও লিড", leadMode: "হোয়াটসঅ্যাপ নম্বর নিন", leadOff: "বন্ধ", leadBefore: "স্পিনের আগে",
+      leadAfter: "ফলাফলের সাথে", leadAskName: "নাম জিজ্ঞেস করুন", leadTitle: "ফর্মের শিরোনাম", consentText: "সম্মতির লেখা",
+      defaultCountry: "দেশের কোড", onePerNumber: "প্রতি নম্বরে একবার স্পিন", waNumber: "আপনার হোয়াটসঅ্যাপ (পুরস্কার ক্লেইমের জন্য)",
+      leadWebhook: "ওয়েবহুক URL (ঐচ্ছিক)",
+      secData: "💾 সেভ, লোড ও রিসেট", exportWheel: "⬇ চাকা এক্সপোর্ট", importWheel: "⬆ চাকা ইমপোর্ট", resetDesign: "↺ ডিজাইন রিসেট",
+      none: "নেই", customSet: "সেট করা ✓", upload: "আপলোড",
+    },
+  };
+  const BN_DIGITS = "০১২৩৪৫৬৭৮৯";
+  const bnNum = (v) => String(v).replace(/\d/g, (d) => BN_DIGITS[d]);
+  const lang = () => (S().lang === "bn" ? "bn" : "en");
+  const num = (v) => (lang() === "bn" ? bnNum(v) : String(v));
+  function t(key, vars) {
+    let s = I18N[lang()][key] ?? I18N.en[key] ?? key;
+    if (vars) for (const k in vars) s = s.split(`{${k}}`).join(vars[k]);
+    return s;
+  }
+
+  // ---------- Data ----------
+  const PALETTES = {
+    Classic: ["#e53935", "#1e88e5", "#43a047", "#fb8c00"],
+    Candy: ["#ff6b9d", "#c86bfa", "#6bc5ff", "#ffd36b", "#6bffb8"],
+    Sunset: ["#ff5e62", "#ff9966", "#ffc371", "#f857a6", "#7f5af0"],
+    Ocean: ["#0077b6", "#00b4d8", "#48cae4", "#023e8a", "#90e0ef"],
+    Forest: ["#2d6a4f", "#40916c", "#52b788", "#95d5b2", "#1b4332"],
+    Neon: ["#ff006e", "#fb5607", "#ffbe0b", "#3a86ff", "#8338ec"],
+    Pastel: ["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#bdb2ff"],
+    Gold: ["#b8860b", "#1f1f1f", "#daa520", "#2e2e2e"],
+    Mono: ["#222831", "#393e46", "#4f5764", "#6b7280"],
+  };
+
+  // canvas font weight for each font
+  const FONTS = {
+    "Poppins": 700, "Montserrat": 800, "Fredoka": 700, "Nunito": 900, "Bebas Neue": 400, "Bangers": 400,
+    "Righteous": 400, "Hind Siliguri": 700, "Baloo Da 2": 800, "Noto Sans Bengali": 700,
+  };
+
+  const EASINGS = {
+    smooth: [0.33, 0.25, 0.12, 1],
+    dramatic: [0.2, 0.6, 0.0, 1],
+    quick: [0.15, 0.9, 0.35, 1],
+    windup: [0.45, 0.05, 0.2, 1],
+  };
+
+  const range = (n) => Array.from({ length: n }, (_, i) => String(i + 1));
+  const PRESETS = [
+    { en: "Names", bn: "নাম", items: {
+      en: ["Emma", "Liam", "Olivia", "Noah", "Ava", "Lucas", "Mia", "Ethan", "Sofia", "Aiden", "Zara", "Omar"],
+      bn: ["রহিম", "করিম", "সাদিয়া", "তানভীর", "নুসরাত", "আরিফ", "মিম", "রাফি", "জান্নাত", "সাকিব", "তাসনিম", "ইমন"] } },
+    { en: "Offers", bn: "অফার", items: {
+      en: ["10% Off", "Free Delivery", "Try Again", "20% Off", "Gift Box", "৳50 Cashback", "Buy 1 Get 1", "Try Again"],
+      bn: ["১০% ছাড়", "ফ্রি ডেলিভারি", "আবার চেষ্টা করুন", "২০% ছাড়", "গিফট বক্স", "৫০ টাকা ক্যাশব্যাক", "১টি কিনলে ১টি ফ্রি", "আবার চেষ্টা করুন"] } },
+    { en: "Prizes", bn: "পুরস্কার", items: {
+      en: ["Smartphone", "Gift Card", "Try Again", "T-Shirt", "50% Off", "Free Coffee", "Try Again", "Jackpot"],
+      bn: ["মোবাইল ফোন", "গিফট কার্ড", "আবার চেষ্টা করুন", "টি-শার্ট", "৫০% ছাড়", "ফ্রি কফি", "আবার চেষ্টা করুন", "জ্যাকপট"] } },
+    { en: "Yes / No", bn: "হ্যাঁ / না", items: { en: ["Yes", "No", "Yes", "No"], bn: ["হ্যাঁ", "না", "হ্যাঁ", "না"] } },
+    { en: "Coin Flip", bn: "টস", items: { en: ["Heads", "Tails"], bn: ["হেড", "টেইল"] } },
+    { en: "Dice 1–6", bn: "লুডু ছক্কা ১–৬", items: { en: range(6), bn: range(6).map(bnNum) } },
+    { en: "Numbers 1–10", bn: "সংখ্যা ১–১০", items: { en: range(10), bn: range(10).map(bnNum) } },
+    { en: "Numbers 1–20", bn: "সংখ্যা ১–২০", items: { en: range(20), bn: range(20).map(bnNum) } },
+    { en: "Truth or Dare", bn: "সত্য না সাহস", items: { en: ["Truth", "Dare", "Truth", "Dare", "Truth", "Dare"], bn: ["সত্য", "সাহস", "সত্য", "সাহস", "সত্য", "সাহস"] } },
+    { en: "What to Eat", bn: "কী খাবো", items: {
+      en: ["Pizza", "Burger", "Biryani", "Sushi", "Tacos", "Pasta", "Salad", "Kebab"],
+      bn: ["পিজ্জা", "বার্গার", "বিরিয়ানি", "কাচ্চি", "ফুচকা", "খিচুড়ি", "চাইনিজ", "কাবাব"] } },
+    { en: "Colors", bn: "রং", items: {
+      en: ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"],
+      bn: ["লাল", "কমলা", "হলুদ", "সবুজ", "নীল", "বেগুনি", "গোলাপি"] } },
+  ];
+
+  const DEFAULTS = {
+    lang: (navigator.language || "").toLowerCase().startsWith("bn") ? "bn" : "en",
+    title: "", theme: "dark", muted: false,
+    palette: "Classic", customColors: ["#ff5a36", "#ffb020", "#22c55e", "#3b82f6", "#a855f7"],
+    font: "Poppins", textSize: 100, autoText: true, textColor: "#ffffff",
+    borderColor: "#ffffff", borderWidth: 10, dividers: true, pegs: true, pegColor: "#ffffff",
+    pointerColor: "#ff5a36", centerText: "", centerColor: "#ff5a36", centerTextColor: "#ffffff",
+    logo: "", logoUrl: "", logoPlace: "center",
+    accent: "#ff5a36", bgType: "glow", bgColor: "#0f1420", bgColor2: "#3b1d60", bgImage: "",
+    turns: 30, duration: 12, easing: "smooth", customBezier: "0.33, 0.25, 0.12, 1", motionBlur: true,
+    volume: 80, tickStyle: "wood", winStyle: "boom", whoosh: true, customTick: "", customWin: "",
+    winMessage: "", showPopup: true, confetti: true, confettiAmount: 350, shake: true, flash: true, autoRemove: false,
+    leadMode: "off", leadAskName: true, leadTitle: "", consentText: "", defaultCountry: "880",
+    onePerNumber: false, waNumber: "", leadWebhook: "",
+  };
+  const freshSettings = () => ({ ...DEFAULTS, customColors: DEFAULTS.customColors.slice() });
+
+  // ---------- State ----------
+  const state = { entries: [], results: [], leads: [], settings: freshSettings() };
+  function S() { return state.settings; }
+  let rotation = 0;
+  let spinning = false;
+  let lastWinnerIndex = -1;
+  let lastWinnerName = "";
+  let highlightIdx = -1;
+  let pendingRemove = -1;
+  let gateLead = null; // lead collected before a spin
+
+  // ---------- Helpers ----------
+  function rand() {
+    const a = new Uint32Array(1);
+    crypto.getRandomValues(a);
+    return a[0] / 4294967296;
+  }
+  const mod = (a, n) => ((a % n) + n) % n;
+  const clamp01 = (v) => Math.min(1, Math.max(0, v));
+  function el(tag, props = {}, ...kids) {
+    const e = document.createElement(tag);
+    Object.assign(e, props);
+    e.append(...kids);
+    return e;
+  }
+  const isHttps = (v) => /^https:\/\/[^\s"'<>]+$/i.test(v);
+
+  function mergeSettings(src, trusted) {
+    const out = {};
+    if (!src || typeof src !== "object") return out;
+    for (const k in DEFAULTS) {
+      if (!(k in src)) continue;
+      const v = src[k];
+      const d = DEFAULTS[k];
+      if (Array.isArray(d)) {
+        if (Array.isArray(v)) {
+          const cols = v.filter((x) => /^#[0-9a-f]{6}$/i.test(x)).slice(0, 24);
+          if (cols.length >= 2) out[k] = cols;
+        }
+        continue;
+      }
+      if (typeof v !== typeof d) continue;
+      if (FILE_KEYS.includes(k)) {
+        if (trusted && (v === "" || /^data:(image|audio)\/[\w.+-]+;base64,/.test(v))) out[k] = v;
+      } else if (k === "leadWebhook") {
+        if (trusted && (v === "" || isHttps(v))) out[k] = v;
+      } else if (k === "logoUrl") {
+        if (v === "" || isHttps(v)) out[k] = v;
+      } else if (k === "lang") {
+        if (v === "en" || v === "bn") out[k] = v;
+      } else {
+        out[k] = v;
+      }
+    }
+    return out;
+  }
+
+  // ---------- Persistence ----------
+  let saveWarned = false;
+  function save() {
+    if (EMBED) return; // embedded wheels never touch the visitor's saved data
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(state));
+    } catch (_) {
+      if (!saveWarned) { toast(t("tStorage")); saveWarned = true; }
+    }
+  }
+  function load() {
+    if (!EMBED) {
+      try {
+        const raw = localStorage.getItem(STORE_KEY);
+        if (raw) {
+          const d = JSON.parse(raw);
+          if (Array.isArray(d.entries)) state.entries = d.entries.map(String);
+          if (Array.isArray(d.results)) state.results = d.results;
+          if (Array.isArray(d.leads)) state.leads = d.leads;
+          Object.assign(state.settings, mergeSettings(d.settings, true));
+        } else {
+          const old = JSON.parse(localStorage.getItem("spinpick.v1") || "null");
+          if (old) {
+            if (Array.isArray(old.entries)) state.entries = old.entries.map(String);
+            if (Array.isArray(old.results)) state.results = old.results;
+            Object.assign(state.settings, mergeSettings({ palette: old.palette, title: old.title, theme: old.theme }));
+          }
+        }
+      } catch (_) {}
+    }
+    if (location.hash.startsWith("#w=")) {
+      try {
+        const data = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(3)))));
+        if (Array.isArray(data.e)) state.entries = data.e.map(String).slice(0, 1000);
+        Object.assign(state.settings, mergeSettings(data.s, false));
+        if (!EMBED) history.replaceState(null, "", location.pathname);
+      } catch (_) {}
+    }
+    if (!PALETTES[S().palette] && S().palette !== "Custom") S().palette = "Classic";
+    if (!state.entries.length && !EMBED) state.entries = PRESETS[0].items[lang()].slice();
+  }
+
+  // ---------- Easing ----------
+  // CSS-style cubic-bezier(x1, y1, x2, y2), solved the same way browsers do.
+  function cubicBezier(x1, y1, x2, y2) {
+    const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+    const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+    const sampleX = (u) => ((ax * u + bx) * u + cx) * u;
+    const sampleY = (u) => ((ay * u + by) * u + cy) * u;
+    const slopeX = (u) => (3 * ax * u + 2 * bx) * u + cx;
+    function solveT(x) {
+      let u = x;
+      for (let i = 0; i < 8; i++) {
+        const err = sampleX(u) - x;
+        if (Math.abs(err) < 1e-6) return u;
+        const d = slopeX(u);
+        if (Math.abs(d) < 1e-6) break;
+        u -= err / d;
+      }
+      let lo = 0, hi = 1;
+      u = x;
+      while (hi - lo > 1e-7) {
+        const v = sampleX(u);
+        if (Math.abs(v - x) < 1e-6) return u;
+        if (x > v) lo = u; else hi = u;
+        u = (lo + hi) / 2;
+      }
+      return u;
+    }
+    return (x) => (x <= 0 ? 0 : x >= 1 ? 1 : sampleY(solveT(x)));
+  }
+  function getEasing() {
+    const s = S();
+    let p = EASINGS[s.easing] || EASINGS.smooth;
+    if (s.easing === "custom") {
+      const n = s.customBezier.split(/[\s,]+/).filter(Boolean).map(Number);
+      if (n.length === 4 && n.every((v) => !isNaN(v))) p = [clamp01(n[0]), n[1], clamp01(n[2]), n[3]];
+    }
+    return cubicBezier(...p);
+  }
+
+  // ---------- Sound engine (Web Audio, no files needed) ----------
+  const Sound = (() => {
+    let ac = null, master, reverb, noiseBuf;
+    const buffers = {};
+
+    function init() {
+      if (!ac) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return null;
+        ac = new AC();
+        const comp = ac.createDynamicsCompressor();
+        comp.threshold.value = -12; comp.knee.value = 12; comp.ratio.value = 5;
+        comp.attack.value = 0.002; comp.release.value = 0.2;
+        master = ac.createGain();
+        master.connect(comp);
+        comp.connect(ac.destination);
+        reverb = ac.createConvolver();
+        reverb.buffer = impulse(2.6, 2.8);
+        reverb.connect(master);
+        noiseBuf = ac.createBuffer(1, ac.sampleRate * 2, ac.sampleRate);
+        const d = noiseBuf.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+        setVolume();
+      }
+      if (ac.state === "suspended") ac.resume();
+      return ac;
+    }
+    function impulse(sec, decay) {
+      const len = Math.floor(ac.sampleRate * sec);
+      const b = ac.createBuffer(2, len, ac.sampleRate);
+      for (let ch = 0; ch < 2; ch++) {
+        const data = b.getChannelData(ch);
+        for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay);
+      }
+      return b;
+    }
+    function setVolume() {
+      if (!ac) return;
+      const s = S();
+      master.gain.setTargetAtTime(s.muted ? 0 : s.volume / 100, ac.currentTime, 0.02);
+    }
+    function bus(wet = 0, level = 1) {
+      const g = ac.createGain();
+      g.gain.value = level;
+      g.connect(master);
+      if (wet > 0) {
+        const w = ac.createGain();
+        w.gain.value = wet;
+        g.connect(w);
+        w.connect(reverb);
+      }
+      return g;
+    }
+    function env(param, at, peak, a, d) {
+      param.setValueAtTime(0.0001, at);
+      param.exponentialRampToValueAtTime(Math.max(peak, 0.0002), at + a);
+      param.exponentialRampToValueAtTime(0.0001, at + a + d);
+    }
+    function osc(type, freq, at, dest, peak, a, d) {
+      const o = ac.createOscillator();
+      o.type = type;
+      o.frequency.setValueAtTime(freq, at);
+      const g = ac.createGain();
+      env(g.gain, at, peak, a, d);
+      o.connect(g).connect(dest);
+      o.start(at);
+      o.stop(at + a + d + 0.05);
+      return o;
+    }
+    function noise(at, dest, peak, a, d, type, freq, q) {
+      const n = ac.createBufferSource();
+      n.buffer = noiseBuf;
+      n.loop = true;
+      const f = ac.createBiquadFilter();
+      f.type = type;
+      f.frequency.setValueAtTime(freq, at);
+      if (q) f.Q.value = q;
+      const g = ac.createGain();
+      env(g.gain, at, peak, a, d);
+      n.connect(f).connect(g).connect(dest);
+      n.start(at, Math.random() * 1.5);
+      n.stop(at + a + d + 0.05);
+      return { f, g };
+    }
+
+    const TICKS = {
+      wood(at) {
+        const out = bus(0.12);
+        const r = 0.94 + Math.random() * 0.12;
+        noise(at, out, 0.7, 0.001, 0.035, "bandpass", 2400 * r, 5);
+        const o = osc("sine", 1500 * r, at, out, 0.35, 0.001, 0.04);
+        o.frequency.exponentialRampToValueAtTime(600, at + 0.04);
+      },
+      click(at) {
+        const out = bus(0.05);
+        noise(at, out, 0.6, 0.0005, 0.012, "highpass", 3500, 0.7);
+        osc("square", 3000, at, out, 0.05, 0.0005, 0.01);
+      },
+      pop(at) {
+        const out = bus(0.1);
+        const o = osc("sine", 900, at, out, 0.5, 0.002, 0.06);
+        o.frequency.exponentialRampToValueAtTime(220, at + 0.06);
+      },
+      bell(at) {
+        const out = bus(0.35);
+        const f = 1800 + Math.random() * 60;
+        osc("sine", f, at, out, 0.18, 0.001, 0.25);
+        osc("sine", f * 2.76, at, out, 0.06, 0.001, 0.12);
+      },
+    };
+
+    function boom(at) {
+      const out = bus(0.3, 1);
+      const sub = osc("sine", 150, at, out, 1.0, 0.004, 1.4);
+      sub.frequency.exponentialRampToValueAtTime(30, at + 1.0);
+      const punch = osc("triangle", 320, at, out, 0.5, 0.002, 0.25);
+      punch.frequency.exponentialRampToValueAtTime(60, at + 0.25);
+      const rumble = noise(at, out, 0.9, 0.003, 1.6, "lowpass", 2500, 0.8);
+      rumble.f.frequency.exponentialRampToValueAtTime(90, at + 1.4);
+      noise(at, out, 0.5, 0.001, 0.09, "highpass", 1800, 0.5);
+    }
+    function voice(at, f, dur, out, peak) {
+      const fl = ac.createBiquadFilter();
+      fl.type = "lowpass";
+      fl.Q.value = 1.5;
+      fl.frequency.setValueAtTime(600, at);
+      fl.frequency.exponentialRampToValueAtTime(4200, at + 0.08);
+      fl.frequency.exponentialRampToValueAtTime(1800, at + dur);
+      const g = ac.createGain();
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(peak, at + 0.03);
+      g.gain.setValueAtTime(peak, at + dur * 0.6);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+      fl.connect(g).connect(out);
+      [-8, 0, 8].forEach((c) => {
+        const o = ac.createOscillator();
+        o.type = "sawtooth";
+        o.frequency.value = f;
+        o.detune.value = c;
+        o.connect(fl);
+        o.start(at);
+        o.stop(at + dur + 0.05);
+      });
+      const sub = ac.createOscillator();
+      sub.type = "triangle";
+      sub.frequency.value = f / 2;
+      sub.connect(fl);
+      sub.start(at);
+      sub.stop(at + dur + 0.05);
+    }
+    function fanfare(at) {
+      const out = bus(0.4, 0.55);
+      const C5 = 523.25, E5 = 659.25, G5 = 783.99, C6 = 1046.5;
+      voice(at, C5, 0.16, out, 0.12);
+      voice(at + 0.13, E5, 0.16, out, 0.12);
+      voice(at + 0.26, G5, 0.16, out, 0.12);
+      voice(at + 0.39, C6, 0.2, out, 0.13);
+      [C5, E5, G5, C6].forEach((f) => voice(at + 0.55, f, 1.9, out, 0.06));
+      voice(at + 0.55, 130.81, 1.9, out, 0.09);
+    }
+    function sparkle(at) {
+      const out = bus(0.6, 0.6);
+      for (let i = 0; i < 22; i++) {
+        const tt = at + Math.random() * 1.8;
+        const f = 2000 + Math.random() * 3500;
+        osc("sine", f, tt, out, 0.06, 0.002, 0.3);
+        osc("triangle", f * 2, tt, out, 0.02, 0.002, 0.15);
+      }
+    }
+    function applause(at, len = 2.8) {
+      const out = bus(0.35, 0.8);
+      for (let i = 0; i < 220; i++) {
+        const tt = at + Math.pow(Math.random(), 1.4) * len;
+        const fade = 1 - (tt - at) / len;
+        noise(tt, out, 0.03 + Math.random() * 0.18 * fade, 0.001, 0.03 + Math.random() * 0.04,
+          "bandpass", 800 + Math.random() * 1800, 1.2);
+      }
+    }
+    function arcade(at) {
+      const out = bus(0.2, 0.5);
+      [523, 659, 784, 1047, 1319, 1568].forEach((f, i) => osc("square", f, at + i * 0.07, out, 0.12, 0.005, 0.09));
+      osc("square", 2093, at + 0.45, out, 0.12, 0.005, 0.6);
+      osc("square", 1047, at + 0.45, out, 0.08, 0.005, 0.6);
+    }
+
+    async function loadBuffer(url) {
+      if (!url || !init()) return null;
+      if (buffers[url]) return buffers[url];
+      try {
+        const ab = await (await fetch(url)).arrayBuffer();
+        buffers[url] = await ac.decodeAudioData(ab);
+        return buffers[url];
+      } catch (_) { return null; }
+    }
+    function playBuffer(buf, level = 1) {
+      const src = ac.createBufferSource();
+      src.buffer = buf;
+      src.connect(bus(0, level));
+      src.start();
+    }
+
+    return {
+      unlock: init,
+      setVolume,
+      preload() { const s = S(); loadBuffer(s.customTick); loadBuffer(s.customWin); },
+      tick() {
+        const s = S();
+        if (s.muted || !init()) return;
+        if (s.customTick) {
+          if (buffers[s.customTick]) return playBuffer(buffers[s.customTick], 0.9);
+          loadBuffer(s.customTick);
+        }
+        if (TICKS[s.tickStyle]) TICKS[s.tickStyle](ac.currentTime);
+      },
+      async win() {
+        const s = S();
+        if (s.muted || !init()) return;
+        if (s.customWin) {
+          const b = await loadBuffer(s.customWin);
+          if (b) return playBuffer(b, 1);
+        }
+        const at = ac.currentTime + 0.02;
+        switch (s.winStyle) {
+          case "boom": boom(at); fanfare(at + 0.08); sparkle(at + 0.4); applause(at + 0.35); break;
+          case "fanfare": fanfare(at); sparkle(at + 0.4); break;
+          case "applause": applause(at, 3); break;
+          case "arcade": arcade(at); sparkle(at + 0.4); break;
+        }
+      },
+      whoosh(dur) {
+        const s = S();
+        if (s.muted || !s.whoosh || !init()) return;
+        const at = ac.currentTime;
+        const len = Math.min(dur * 0.5, 4);
+        const out = bus(0.2, 0.6);
+        const n = noise(at, out, 0.45, 0.25, len, "bandpass", 400, 0.8);
+        n.f.frequency.exponentialRampToValueAtTime(1800, at + 0.25);
+        n.f.frequency.exponentialRampToValueAtTime(300, at + 0.25 + len);
+      },
+    };
+  })();
+
+  // ---------- Drawing ----------
+  function colorsList() {
+    const s = S();
+    return s.palette === "Custom" ? s.customColors : PALETTES[s.palette] || PALETTES.Classic;
+  }
+  function colorFor(i, n) {
+    const p = colorsList();
+    if (n > 1 && i === n - 1 && n % p.length === 1) return p[(i + 1) % p.length];
+    return p[i % p.length];
+  }
+  function textColor(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    const r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+    return (r * 299 + g * 587 + b * 114) / 1000 > 160 ? "#1b2333" : "#ffffff";
+  }
+
+  function draw() {
+    const s = S();
+    const size = canvas.width;
+    const c = size / 2;
+    const k = size / 600;
+    const bw = s.borderWidth * k;
+    const outer = c - 4;
+    const R = outer - bw;
+    const items = state.entries.length ? state.entries : [t("addEntries")];
+    const n = items.length;
+    const arc = TAU / n;
+    const weight = FONTS[s.font] || 700;
+
+    ctx.clearRect(0, 0, size, size);
+
+    if (bw > 0) {
+      ctx.beginPath();
+      ctx.arc(c, c, outer, 0, TAU);
+      ctx.fillStyle = s.borderColor;
+      ctx.fill();
+    }
+
+    for (let i = 0; i < n; i++) {
+      const start = rotation + i * arc;
+      const color = state.entries.length ? colorFor(i, n) : "#6b7280";
+      ctx.beginPath();
+      ctx.moveTo(c, c);
+      ctx.arc(c, c, R, start, start + arc);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+      if (s.dividers && n > 1) {
+        ctx.strokeStyle = "rgba(255,255,255,.4)";
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+      }
+
+      ctx.save();
+      ctx.translate(c, c);
+      ctx.rotate(start + arc / 2);
+      ctx.textAlign = "right";
+      ctx.textBaseline = "middle";
+      const tc = s.autoText ? textColor(color) : s.textColor;
+      ctx.fillStyle = tc;
+      if (tc.toLowerCase() === "#ffffff") {
+        ctx.shadowColor = "rgba(0,0,0,.3)";
+        ctx.shadowBlur = 6;
+      }
+      const maxW = R * 0.68;
+      const maxH = Math.min(2 * R * 0.62 * Math.sin(Math.min(arc, Math.PI) / 2), 90);
+      let fs = Math.max(12, Math.min(maxH * 0.8, 66) * (s.textSize / 100));
+      const fam = `"${s.font}", "Hind Siliguri", sans-serif`;
+      ctx.font = `${weight} ${fs}px ${fam}`;
+      let label = items[i];
+      while (ctx.measureText(label).width > maxW && fs > 14) {
+        fs -= 2;
+        ctx.font = `${weight} ${fs}px ${fam}`;
+      }
+      while (ctx.measureText(label).width > maxW && label.length > 1) {
+        label = label.slice(0, -2) + "…";
+      }
+      ctx.fillText(label, R - 24 * k * 0.6, 0);
+      ctx.restore();
+    }
+
+    if (highlightIdx >= 0 && highlightIdx < n && n > 1) {
+      for (let i = 0; i < n; i++) {
+        if (i === highlightIdx) continue;
+        const start = rotation + i * arc;
+        ctx.beginPath();
+        ctx.moveTo(c, c);
+        ctx.arc(c, c, R, start, start + arc);
+        ctx.closePath();
+        ctx.fillStyle = "rgba(0,0,0,.5)";
+        ctx.fill();
+      }
+      const start = rotation + highlightIdx * arc;
+      ctx.beginPath();
+      ctx.moveTo(c, c);
+      ctx.arc(c, c, R, start, start + arc);
+      ctx.closePath();
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 6;
+      ctx.stroke();
+    }
+
+    if (s.pegs && n > 1 && n <= 72) {
+      const pr = bw >= 8 ? R + bw / 2 : R - 10 * k;
+      const ps = Math.max(5, Math.min(10, bw * 0.35 + 4)) * (k / 1.3);
+      ctx.save();
+      ctx.shadowColor = "rgba(0,0,0,.35)";
+      ctx.shadowBlur = 4;
+      ctx.fillStyle = s.pegColor;
+      for (let i = 0; i < n; i++) {
+        const a = rotation + i * arc;
+        ctx.beginPath();
+        ctx.arc(c + Math.cos(a) * pr, c + Math.sin(a) * pr, ps, 0, TAU);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+  }
+
+  function indexAtPointer() {
+    const n = state.entries.length;
+    if (!n) return -1;
+    return Math.floor(mod(POINTER_ANGLE - rotation, TAU) / (TAU / n)) % n;
+  }
+
+  // ---------- Confetti & fireworks ----------
+  const FX = (() => {
+    const cv = $("confetti");
+    const cx = cv.getContext("2d");
+    let parts = [];
+    let running = false;
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      cv.width = innerWidth * dpr;
+      cv.height = innerHeight * dpr;
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function burst(x, y, count, colors, power = 1, angle = null, spread = TAU) {
+      for (let i = 0; i < count; i++) {
+        const a = angle === null ? rand() * TAU : angle + (rand() - 0.5) * spread;
+        const sp = (4 + rand() * 10) * power;
+        parts.push({
+          x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+          s: 5 + rand() * 7, r: rand() * TAU, vr: (rand() - 0.5) * 0.4,
+          c: colors[Math.floor(rand() * colors.length)],
+          round: rand() < 0.3, life: 0, max: 140 + rand() * 90, wob: rand() * TAU,
+        });
+      }
+      if (!running) { running = true; requestAnimationFrame(loop); }
+    }
+    function loop() {
+      cx.clearRect(0, 0, innerWidth, innerHeight);
+      for (const p of parts) {
+        p.vy += 0.22; p.vx *= 0.985; p.vy *= 0.985;
+        p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life++;
+        cx.globalAlpha = Math.max(0, Math.min(1, (p.max - p.life) / (p.max * 0.3)));
+        cx.fillStyle = p.c;
+        cx.save();
+        cx.translate(p.x, p.y);
+        cx.rotate(p.r);
+        if (p.round) {
+          cx.beginPath();
+          cx.arc(0, 0, p.s / 2.5, 0, TAU);
+          cx.fill();
+        } else {
+          cx.scale(1, Math.cos(p.life * 0.15 + p.wob));
+          cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+        }
+        cx.restore();
+      }
+      cx.globalAlpha = 1;
+      parts = parts.filter((p) => p.life < p.max && p.y < innerHeight + 40);
+      if (parts.length) requestAnimationFrame(loop);
+      else { running = false; cx.clearRect(0, 0, innerWidth, innerHeight); }
+    }
+    function celebrate(colors, amount) {
+      resize();
+      const w = innerWidth, h = innerHeight;
+      const per = Math.round(amount / 5);
+      const r = $("wheelWrap").getBoundingClientRect();
+      burst(r.left + r.width / 2, r.top + r.height / 2, Math.round(per * 1.4), colors, 1.2);
+      setTimeout(() => {
+        burst(0, h * 0.75, per, colors, 1.4, -Math.PI / 3, 0.6);
+        burst(w, h * 0.75, per, colors, 1.4, (-2 * Math.PI) / 3, 0.6);
+      }, 180);
+      [450, 800, 1150].forEach((d) =>
+        setTimeout(() => burst(w * (0.2 + rand() * 0.6), h * (0.15 + rand() * 0.3), Math.round(per * 0.6), colors, 0.8), d));
+    }
+    return { celebrate };
+  })();
+
+  // ---------- Spin ----------
+  function setSpinButtons(disabled) {
+    $("spinBtn").disabled = disabled;
+    $("mSpin").disabled = disabled;
+  }
+
+  // entry point for every spin button: may ask for a WhatsApp number first
+  function requestSpin() {
+    if (spinning) return;
+    if (!state.entries.length) { toast(t("tAddOne")); return; }
+    if (S().leadMode === "before") { openLeadModal(); return; }
+    spin();
+  }
+
+  function spin() {
+    if (spinning) return;
+    commitPendingRemove();
+    const s = S();
+    const n = state.entries.length;
+    if (n < 1) { toast(t("tAddOne")); return; }
+    $("modal").classList.add("hidden");
+    highlightIdx = -1;
+    spinning = true;
+    setSpinButtons(true);
+    Sound.unlock();
+    Sound.whoosh(s.duration);
+
+    const winner = Math.floor(rand() * n);
+    const arc = TAU / n;
+    const jitter = (rand() * 0.8 + 0.1) * arc;
+    const landing = POINTER_ANGLE - (winner * arc + jitter);
+    const from = rotation;
+    const total = mod(landing - from, TAU) + s.turns * TAU;
+    const ease = getEasing();
+    const dur = s.duration * 1000;
+    const t0 = performance.now();
+    const pointer = $("pointer");
+    let lastIdx = indexAtPointer();
+    let lastTick = 0;
+
+    function frame(now) {
+      const p = Math.min(1, (now - t0) / dur);
+      const prev = rotation;
+      rotation = from + total * ease(p);
+      if (s.motionBlur) {
+        const b = Math.min(4, Math.abs(rotation - prev) * 5);
+        canvas.style.filter = b > 0.4 ? `blur(${b.toFixed(1)}px)` : "";
+      }
+      draw();
+      const idx = indexAtPointer();
+      if (idx !== lastIdx) {
+        lastIdx = idx;
+        if (now - lastTick > 28) {
+          lastTick = now;
+          Sound.tick();
+          pointer.classList.remove("tick");
+          void pointer.offsetWidth;
+          pointer.classList.add("tick");
+        }
+      }
+      if (p < 1) requestAnimationFrame(frame);
+      else finish(winner);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function finish(winnerIdx) {
+    const s = S();
+    rotation = mod(rotation, TAU);
+    canvas.style.filter = "";
+    spinning = false;
+    setSpinButtons(false);
+    lastWinnerIndex = winnerIdx;
+    highlightIdx = winnerIdx;
+    const n = state.entries.length;
+    const name = state.entries[winnerIdx];
+    lastWinnerName = name;
+    const color = colorFor(winnerIdx, n);
+    draw();
+
+    state.results.unshift({ name, time: Date.now() });
+    state.results = state.results.slice(0, 500);
+    renderResults();
+
+    if (gateLead) { // number collected before this spin: attach the result and send
+      gateLead.result = name;
+      sendLead(gateLead);
+      gateLead = null;
+      renderLeads();
+    }
+
+    Sound.win();
+    if (s.flash && !reduceMotion) {
+      const f = $("flash");
+      f.style.setProperty("--flash", color);
+      f.classList.remove("on");
+      void f.offsetWidth;
+      f.classList.add("on");
+    }
+    if (s.shake && !reduceMotion) {
+      const w = $("wheelWrap");
+      w.classList.remove("shake");
+      void w.offsetWidth;
+      w.classList.add("shake");
+    }
+    if (s.confetti) FX.celebrate([color, ...colorsList(), "#ffffff", "#ffd700"], s.confettiAmount);
+
+    pendingRemove = s.autoRemove ? winnerIdx : -1;
+    if (s.showPopup || s.leadMode === "after") {
+      $("winLabel").textContent = s.winMessage || t("winMsgDefault");
+      $("winnerName").textContent = name;
+      $("modalCard").style.borderTopColor = color;
+      $("removeWinner").classList.toggle("hidden", s.autoRemove);
+      updateClaimButton(name);
+      $("leadThanks").classList.add("hidden");
+      if (s.leadMode === "after") {
+        prepareLeadForm("after");
+        $("winLeadSlot").append($("leadForm"));
+      } else {
+        $("leadCard").append($("leadForm"));
+      }
+      setTimeout(() => {
+        $("modal").classList.remove("hidden");
+        (s.leadMode === "after" ? $("leadPhone") : $("spinAgain")).focus();
+      }, 350);
+    } else {
+      toast(`🎉 ${name}`);
+    }
+    save();
+  }
+
+  function updateClaimButton(prize) {
+    const s = S();
+    const wa = (s.waNumber || "").replace(/\D/g, "");
+    const btn = $("claimBtn");
+    if (wa.length >= 8) {
+      const text = t("claimText", { prize, wheel: s.title || t("myWheel") });
+      btn.href = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+      btn.classList.remove("hidden");
+    } else {
+      btn.classList.add("hidden");
+    }
+  }
+
+  function commitPendingRemove() {
+    if (pendingRemove >= 0) {
+      const i = pendingRemove;
+      pendingRemove = -1;
+      removeIndex(i);
+    }
+  }
+  function removeIndex(i) {
+    if (i < 0 || i >= state.entries.length) return;
+    state.entries.splice(i, 1);
+    lastWinnerIndex = -1;
+    highlightIdx = -1;
+    syncTextarea();
+    draw();
+    save();
+  }
+  function closeModal() {
+    $("modal").classList.add("hidden");
+    highlightIdx = -1;
+    commitPendingRemove();
+    draw();
+  }
+
+  // ---------- WhatsApp lead form ----------
+  function normalizePhone(raw) {
+    let v = String(raw).trim().replace(/[০-৯]/g, (d) => BN_DIGITS.indexOf(d)).replace(/[\s\-().]/g, "");
+    if (v.startsWith("+")) v = v.slice(1);
+    else if (v.startsWith("00")) v = v.slice(2);
+    else if (v.startsWith("0")) v = (S().defaultCountry || "").replace(/\D/g, "") + v.slice(1);
+    return /^\d{8,15}$/.test(v) ? v : null;
+  }
+  function prepareLeadForm(mode) {
+    const s = S();
+    const form = $("leadForm");
+    form.dataset.mode = mode;
+    form.hidden = false;
+    $("leadTitle").textContent = s.leadTitle || t(mode === "before" ? "leadTitleBefore" : "leadTitleAfter");
+    $("leadNameField").hidden = !s.leadAskName;
+    $("leadConsentText").textContent = s.consentText || t("consentDefault");
+    $("leadSubmit").textContent = t(mode === "before" ? "submitSpin" : "submit");
+    $("leadCancel").textContent = t(mode === "before" ? "cancel" : "skip");
+    $("leadName").value = "";
+    $("leadPhone").value = "";
+    $("leadConsent").checked = false; // consent is never pre-ticked
+    $("leadError").textContent = "";
+  }
+  function openLeadModal() {
+    if (!$("modal").classList.contains("hidden")) closeModal();
+    prepareLeadForm("before");
+    $("leadCard").append($("leadForm"));
+    $("leadModal").classList.remove("hidden");
+    setTimeout(() => $("leadPhone").focus(), 50);
+  }
+  function submitLead(e) {
+    e.preventDefault();
+    const s = S();
+    const mode = $("leadForm").dataset.mode;
+    const phone = normalizePhone($("leadPhone").value);
+    const err = $("leadError");
+    if (!phone) { err.textContent = t("errPhone"); $("leadPhone").focus(); return; }
+    if (!$("leadConsent").checked) { err.textContent = t("errConsent"); return; }
+    if (s.onePerNumber && state.leads.some((l) => l.phone === "+" + phone)) { err.textContent = t("errUsed"); return; }
+
+    const lead = {
+      time: Date.now(),
+      name: s.leadAskName ? $("leadName").value.trim().slice(0, 60) : "",
+      phone: "+" + phone,
+      result: mode === "after" ? lastWinnerName : "",
+      wheel: s.title || t("myWheel"),
+      consent: true,
+      consentText: s.consentText || t("consentDefault"),
+    };
+    state.leads.unshift(lead);
+    state.leads = state.leads.slice(0, 5000);
+    renderLeads();
+    save();
+
+    if (mode === "before") {
+      gateLead = lead;
+      $("leadModal").classList.add("hidden");
+      spin();
+    } else {
+      sendLead(lead);
+      $("leadForm").hidden = true;
+      $("leadThanks").textContent = t("thanks");
+      $("leadThanks").classList.remove("hidden");
+      $("spinAgain").focus();
+    }
+  }
+  function sendLead(lead) {
+    save();
+    const url = isHttps(CONFIG.leadWebhook || "") ? CONFIG.leadWebhook : S().leadWebhook;
+    if (!isHttps(url || "")) return;
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ ...lead, time: new Date(lead.time).toISOString() }),
+    }).catch(() => {});
+  }
+  function renderLeads() {
+    const ul = $("leadsList");
+    ul.innerHTML = "";
+    state.leads.slice(0, 200).forEach((l) => {
+      const info = [l.name, l.result && `→ ${l.result}`].filter(Boolean).join(" ");
+      const time = new Date(l.time).toLocaleString(lang() === "bn" ? "bn-BD" : undefined, { dateStyle: "short", timeStyle: "short" });
+      ul.append(el("li", { textContent: `${l.phone} ${info}` }, el("small", { textContent: time })));
+    });
+    $("leadCount").textContent = num(state.leads.length);
+    $("leadsEmpty").classList.toggle("hidden", state.leads.length > 0);
+    $("leadsSection").hidden = S().leadMode === "off" && !state.leads.length;
+  }
+  function exportLeads() {
+    const safe = (v) => {
+      let x = String(v ?? "");
+      if (/^[=+\-@]/.test(x)) x = "'" + x; // stop spreadsheet formulas
+      return `"${x.replace(/"/g, '""')}"`;
+    };
+    const rows = [["Time", "Name", "WhatsApp", "Result", "Wheel", "Consent"]];
+    state.leads.forEach((l) => rows.push([new Date(l.time).toLocaleString(), safe(l.name), `"${l.phone}"`, safe(l.result), safe(l.wheel), l.consent ? "yes" : "no"]));
+    const csv = "﻿" + rows.map((r) => r.join(",")).join("\r\n");
+    download(new Blob([csv], { type: "text/csv;charset=utf-8" }), "whatsapp-leads.csv");
+  }
+
+  // ---------- Entries / results UI ----------
+  const ta = $("entries");
+  function syncTextarea() {
+    ta.value = state.entries.join("\n");
+    updateCounts();
+  }
+  function updateCounts() {
+    $("entryCount").textContent = num(state.entries.length);
+    if (document.activeElement !== $("countInput")) $("countInput").value = state.entries.length;
+  }
+  function readTextarea() {
+    state.entries = ta.value.split("\n").map((x) => x.trim()).filter(Boolean);
+    updateCounts();
+    highlightIdx = -1;
+    pendingRemove = -1;
+    draw();
+    save();
+  }
+  function setCount(n) {
+    n = Math.max(0, Math.min(500, Math.floor(+n || 0)));
+    if (n < state.entries.length) state.entries = state.entries.slice(0, n);
+    while (state.entries.length < n) state.entries.push(`${t("item")} ${num(state.entries.length + 1)}`);
+    entriesChanged();
+  }
+  function renderResults() {
+    const ol = $("results");
+    ol.innerHTML = "";
+    state.results.forEach((r) => {
+      const time = el("small", { textContent: new Date(r.time).toLocaleTimeString(lang() === "bn" ? "bn-BD" : [], { hour: "2-digit", minute: "2-digit" }) });
+      ol.appendChild(el("li", { textContent: r.name }, time));
+    });
+    $("resultCount").textContent = num(state.results.length);
+    $("resultsEmpty").classList.toggle("hidden", state.results.length > 0);
+  }
+  function renderPresets() {
+    const box = $("presets");
+    box.innerHTML = "";
+    PRESETS.forEach((p) => {
+      const b = el("button", { className: "chip", textContent: p[lang()] });
+      b.onclick = () => {
+        state.entries = p.items[lang()].slice();
+        S().title = p[lang()];
+        highlightIdx = -1;
+        pendingRemove = -1;
+        syncTextarea();
+        applySettings();
+        save();
+      };
+      box.appendChild(b);
+    });
+  }
+
+  // ---------- Apply settings to the page ----------
+  const loadedFonts = new Set();
+  function applySettings() {
+    const s = S();
+    const root = document.documentElement;
+    root.dataset.theme = s.theme;
+    root.style.setProperty("--accent", s.accent);
+    root.style.setProperty("--pointer", s.pointerColor);
+
+    const logo = s.logo || (isHttps(s.logoUrl) ? s.logoUrl : "");
+    const hub = $("spinBtn");
+    const spinText = s.centerText || t("spin");
+    const logoInHub = logo && (s.logoPlace === "center" || s.logoPlace === "both");
+    hub.classList.toggle("has-logo", !!logoInHub);
+    hub.textContent = logoInHub ? "" : spinText;
+    hub.setAttribute("aria-label", spinText);
+    hub.style.backgroundColor = s.centerColor;
+    hub.style.backgroundImage = logoInHub ? `url("${logo.replace(/"/g, "%22")}")` : "";
+    hub.style.color = s.centerTextColor;
+    hub.style.borderColor = s.borderColor;
+    $("mSpin").textContent = spinText;
+    const stageLogo = $("stageLogo");
+    const logoTop = logo && (s.logoPlace === "top" || s.logoPlace === "both");
+    stageLogo.hidden = !logoTop;
+    if (logoTop) stageLogo.src = logo; else stageLogo.removeAttribute("src");
+
+    const stage = $("stage");
+    if (s.bgType === "color") stage.style.background = s.bgColor;
+    else if (s.bgType === "gradient") stage.style.background = `linear-gradient(135deg, ${s.bgColor}, ${s.bgColor2})`;
+    else if (s.bgType === "image" && s.bgImage) stage.style.background = `center / cover no-repeat url("${s.bgImage.replace(/"/g, "%22")}")`;
+    else stage.style.background = "";
+
+    const icon = s.muted ? "🔇" : "🔊";
+    $("soundBtn").textContent = icon;
+    $("mSound").textContent = icon;
+    const title = $("wheelTitle");
+    if (document.activeElement !== title) title.value = s.title;
+    title.placeholder = t("myWheel");
+    document.title = `${s.title || t("myWheel")} – SpinPick`;
+    Sound.setVolume();
+
+    if (!loadedFonts.has(s.font) && document.fonts) {
+      const font = s.font;
+      document.fonts.load(`${FONTS[font] || 700} 40px "${font}"`).then(() => { loadedFonts.add(font); draw(); }).catch(() => {});
+    }
+    draw();
+  }
+
+  function applyLang() {
+    const l = lang();
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-i18n]").forEach((e) => { e.textContent = t(e.dataset.i18n); });
+    document.querySelectorAll("[data-i18n-title]").forEach((e) => { e.title = t(e.dataset.i18nTitle); });
+    document.querySelectorAll("[data-i18n-ph]").forEach((e) => { e.placeholder = t(e.dataset.i18nPh); });
+    document.querySelectorAll("[data-i18n-html]").forEach((e) => { e.innerHTML = t(e.dataset.i18nHtml); });
+    $("langBtn").textContent = l === "bn" ? "English" : "বাংলা";
+    renderPresets();
+    renderResults();
+    renderLeads();
+    renderCustomize();
+    updateCounts();
+    applySettings();
+  }
+
+  // ---------- Customize panel (A to Z) ----------
+  const opt = (keys) => keys.map((k) => (Array.isArray(k) ? k : [k, k]));
+  let paletteBox, colorsBox;
+  const visRows = [];
+
+  const SCHEMA = [
+    { section: "secColors", open: true, items: [{ type: "palettes" }] },
+    {
+      section: "secLogo", items: [
+        { key: "logo", type: "file", accept: "image/*" },
+        { key: "logoUrl", type: "text", max: 500, ph: "https://…/logo.png" },
+        { key: "logoPlace", type: "select", options: ["center", "top", "both"] },
+      ],
+    },
+    {
+      section: "secWheel", items: [
+        { key: "font", type: "select", options: Object.keys(FONTS), raw: true },
+        { key: "textSize", type: "range", min: 50, max: 150, step: 5, unit: "%" },
+        { key: "autoText", type: "checkbox" },
+        { key: "textColor", type: "color", show: (s) => !s.autoText },
+        { key: "borderWidth", type: "range", min: 0, max: 30, unit: "px" },
+        { key: "borderColor", type: "color", show: (s) => s.borderWidth > 0 },
+        { key: "dividers", type: "checkbox" },
+        { key: "pegs", type: "checkbox" },
+        { key: "pegColor", type: "color", show: (s) => s.pegs },
+        { key: "pointerColor", type: "color" },
+        { key: "centerText", type: "text", max: 10, ph: () => t("spin") },
+        { key: "centerColor", type: "color" },
+        { key: "centerTextColor", type: "color" },
+      ],
+    },
+    {
+      section: "secBg", items: [
+        { key: "accent", type: "color" },
+        { key: "bgType", type: "select", options: ["glow", "color", "gradient", "image"] },
+        { key: "bgColor", type: "color", show: (s) => s.bgType === "color" || s.bgType === "gradient" },
+        { key: "bgColor2", type: "color", show: (s) => s.bgType === "gradient" },
+        { key: "bgImage", type: "file", accept: "image/*", show: (s) => s.bgType === "image" },
+      ],
+    },
+    {
+      section: "secSpin", items: [
+        { key: "turns", type: "range", min: 3, max: 60, unit: "×" },
+        { key: "duration", type: "range", min: 3, max: 30, unit: "s" },
+        { key: "easing", type: "select", options: ["smooth", "dramatic", "quick", "windup", "custom"] },
+        { key: "customBezier", type: "text", max: 40, show: (s) => s.easing === "custom" },
+        { key: "motionBlur", type: "checkbox" },
+      ],
+    },
+    {
+      section: "secSound", items: [
+        { key: "volume", type: "range", min: 0, max: 100, unit: "%" },
+        { key: "tickStyle", type: "select", options: ["wood", "click", "pop", "bell", "off"] },
+        { key: "winStyle", type: "select", options: ["boom", "fanfare", "applause", "arcade", "off"] },
+        { key: "whoosh", type: "checkbox" },
+        { key: "customTick", type: "file", accept: "audio/*" },
+        { key: "customWin", type: "file", accept: "audio/*" },
+        { type: "buttons", buttons: [["testTick", () => Sound.tick()], ["testWin", () => Sound.win()]] },
+      ],
+    },
+    {
+      section: "secWinner", items: [
+        { key: "showPopup", type: "checkbox" },
+        { key: "winMessage", type: "text", max: 60, ph: () => t("winMsgDefault") },
+        { key: "confetti", type: "checkbox" },
+        { key: "confettiAmount", type: "range", min: 50, max: 800, step: 50, show: (s) => s.confetti },
+        { key: "flash", type: "checkbox" },
+        { key: "shake", type: "checkbox" },
+        { key: "autoRemove", type: "checkbox" },
+      ],
+    },
+    {
+      section: "secLeads", items: [
+        { key: "leadMode", type: "select", options: [["off", "leadOff"], ["before", "leadBefore"], ["after", "leadAfter"]] },
+        { key: "leadAskName", type: "checkbox", show: (s) => s.leadMode !== "off" },
+        { key: "leadTitle", type: "text", max: 80, show: (s) => s.leadMode !== "off", ph: () => t(S().leadMode === "before" ? "leadTitleBefore" : "leadTitleAfter") },
+        { key: "consentText", type: "textarea", max: 300, show: (s) => s.leadMode !== "off", ph: () => t("consentDefault") },
+        { key: "defaultCountry", type: "text", max: 4, show: (s) => s.leadMode !== "off", ph: "880" },
+        { key: "onePerNumber", type: "checkbox", show: (s) => s.leadMode !== "off" },
+        { key: "waNumber", type: "text", max: 20, ph: "8801XXXXXXXXX" },
+        { key: "leadWebhook", type: "text", max: 500, show: (s) => s.leadMode !== "off", ph: "https://…" },
+      ],
+    },
+    {
+      section: "secData", items: [
+        { type: "buttons", buttons: [["exportWheel", exportWheel], ["importWheel", () => $("importFile").click()], ["resetDesign", resetDesign]] },
+      ],
+    },
+  ];
+
+  function setSetting(key, value) {
+    S()[key] = value;
+    applySettings();
+    updateVisibility();
+    if (key === "leadMode") renderLeads();
+    save();
+  }
+
+  function control(item) {
+    const s = S();
+    const key = item.key;
+    const row = el("div", { className: "row" });
+    if (key) row.append(el("label", { textContent: t(key) }));
+    const box = el("span", { className: "ctrl" });
+    const ph = typeof item.ph === "function" ? item.ph() : item.ph || "";
+    switch (item.type) {
+      case "range": {
+        const out = el("output", { textContent: s[key] + (item.unit || "") });
+        const inp = el("input", { type: "range", min: item.min, max: item.max, step: item.step || 1, value: s[key] });
+        inp.oninput = () => { out.textContent = inp.value + (item.unit || ""); setSetting(key, +inp.value); };
+        box.append(inp, out);
+        break;
+      }
+      case "color": {
+        const inp = el("input", { type: "color", value: s[key] });
+        inp.oninput = () => setSetting(key, inp.value);
+        box.append(inp);
+        break;
+      }
+      case "checkbox": {
+        const inp = el("input", { type: "checkbox", checked: !!s[key] });
+        inp.onchange = () => setSetting(key, inp.checked);
+        box.append(inp);
+        break;
+      }
+      case "select": {
+        const sel = el("select");
+        opt(item.options).forEach(([v, l]) =>
+          sel.append(el("option", { value: v, textContent: item.raw ? l : t(l), selected: v === s[key] })));
+        sel.onchange = () => setSetting(key, sel.value);
+        box.append(sel);
+        break;
+      }
+      case "text":
+      case "textarea": {
+        const inp = item.type === "text"
+          ? el("input", { type: "text", value: s[key], maxLength: item.max || 40, placeholder: ph })
+          : el("textarea", { value: s[key], maxLength: item.max || 300, placeholder: ph, rows: 3, className: "small-ta" });
+        inp.oninput = () => {
+          const v = inp.value.trim();
+          if ((key === "logoUrl" || key === "leadWebhook") && v && !isHttps(v)) return; // only https links
+          setSetting(key, key === "logoUrl" || key === "leadWebhook" ? v : inp.value);
+        };
+        if (item.type === "textarea") { row.classList.add("stack"); }
+        box.append(inp);
+        break;
+      }
+      case "file": {
+        const status = el("small");
+        const pick = el("button", { className: "chip", textContent: t("upload") });
+        const del = el("button", { className: "chip danger", textContent: "✕" });
+        const inp = el("input", { type: "file", accept: item.accept, hidden: true });
+        const refresh = () => { status.textContent = S()[key] ? t("customSet") : t("none"); del.hidden = !S()[key]; };
+        pick.onclick = () => inp.click();
+        inp.onchange = () => {
+          const f = inp.files[0];
+          inp.value = "";
+          if (!f) return;
+          if (f.size > MAX_FILE) { toast(t("tTooLarge")); return; }
+          const r = new FileReader();
+          r.onload = () => { setSetting(key, r.result); refresh(); Sound.preload(); toast(t("tUploaded")); };
+          r.readAsDataURL(f);
+        };
+        del.onclick = () => { setSetting(key, ""); refresh(); };
+        refresh();
+        box.append(status, pick, del, inp);
+        break;
+      }
+      case "buttons": {
+        row.style.justifyContent = "flex-start";
+        box.style.flexWrap = "wrap";
+        item.buttons.forEach(([label, fn]) => {
+          const b = el("button", { className: "chip", textContent: t(label) });
+          b.onclick = fn;
+          box.append(b);
+        });
+        break;
+      }
+    }
+    row.append(box);
+    if (item.show) visRows.push([row, item.show]);
+    return row;
+  }
+
+  function renderPalettes() {
+    const s = S();
+    paletteBox.innerHTML = "";
+    const all = { ...PALETTES, Custom: s.customColors };
+    Object.entries(all).forEach(([name, cols]) => {
+      const b = el("button", { className: "palette" + (name === s.palette ? " active" : ""), title: name });
+      cols.forEach((c) => { const sp = el("span"); sp.style.background = c; b.appendChild(sp); });
+      b.onclick = () => { s.palette = name; renderPalettes(); applySettings(); save(); };
+      paletteBox.appendChild(b);
+    });
+  }
+  function renderCustomColors() {
+    const s = S();
+    colorsBox.innerHTML = "";
+    s.customColors.forEach((c, i) => {
+      const inp = el("input", { type: "color", value: c });
+      inp.oninput = () => { s.customColors[i] = inp.value; s.palette = "Custom"; renderPalettes(); applySettings(); save(); };
+      const x = el("button", { className: "swatch-x", textContent: "×", title: t("remove") });
+      x.onclick = () => {
+        if (s.customColors.length <= 2) { toast(t("tKeep2")); return; }
+        s.customColors.splice(i, 1);
+        s.palette = "Custom";
+        renderCustomColors(); renderPalettes(); applySettings(); save();
+      };
+      colorsBox.append(el("span", { className: "swatch" }, inp, x));
+    });
+    const add = el("button", { className: "chip", textContent: t("addColor") });
+    add.onclick = () => {
+      if (s.customColors.length >= 24) return;
+      s.customColors.push("#" + Math.floor(rand() * 0xffffff).toString(16).padStart(6, "0"));
+      s.palette = "Custom";
+      renderCustomColors(); renderPalettes(); applySettings(); save();
+    };
+    colorsBox.append(add);
+  }
+
+  function renderCustomize() {
+    const host = $("tab-customize");
+    const openNow = [...host.querySelectorAll("details")].map((d) => d.open);
+    host.innerHTML = "";
+    visRows.length = 0;
+    SCHEMA.forEach((sec, si) => {
+      const d = el("details", { className: "section", open: openNow.length ? openNow[si] : !!sec.open }, el("summary", { textContent: t(sec.section) }));
+      sec.items.forEach((item) => {
+        if (item.type === "palettes") {
+          paletteBox = el("div", { className: "palettes" });
+          colorsBox = el("div", { className: "swatches" });
+          d.append(paletteBox, el("p", { className: "palette-label", textContent: t("customColorsHint") }), colorsBox);
+        } else {
+          d.append(control(item));
+        }
+      });
+      host.append(d);
+    });
+    renderPalettes();
+    renderCustomColors();
+    updateVisibility();
+  }
+  function updateVisibility() {
+    visRows.forEach(([row, show]) => { row.hidden = !show(S()); });
+  }
+
+  // ---------- Share / embed / export ----------
+  function shareUrl(embed) {
+    const shared = { ...S() };
+    PRIVATE_KEYS.forEach((k) => delete shared[k]);
+    const data = btoa(unescape(encodeURIComponent(JSON.stringify({ e: state.entries, s: shared }))));
+    return `${location.origin}${location.pathname}${embed ? "?embed=1" : ""}#w=${data}`;
+  }
+  function openEmbed() {
+    $("shareUrl").value = shareUrl(false);
+    const src = shareUrl(true).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    $("embedCode").value =
+      `<iframe src="${src}" title="Spin wheel" width="100%" height="640" ` +
+      `style="border:0;max-width:640px;display:block;margin:0 auto" allow="autoplay; fullscreen" loading="lazy"></iframe>`;
+    $("embedModal").classList.remove("hidden");
+  }
+  function download(blob, filename) {
+    const a = el("a", { href: URL.createObjectURL(blob), download: filename });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+  function exportWheel() {
+    const data = { app: "SpinPick", version: 3, entries: state.entries, settings: S() };
+    const name = (S().title || "wheel").replace(/[^\wঀ-৿-]+/g, "_");
+    download(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }), `${name}.json`);
+  }
+  function importWheel(file) {
+    const r = new FileReader();
+    r.onload = () => {
+      try {
+        const d = JSON.parse(r.result);
+        if (Array.isArray(d.entries)) state.entries = d.entries.map(String).slice(0, 1000);
+        Object.assign(state.settings, mergeSettings(d.settings, true));
+        highlightIdx = -1;
+        pendingRemove = -1;
+        syncTextarea();
+        applyLang();
+        Sound.preload();
+        save();
+        toast(t("tImported"));
+      } catch (_) {
+        toast(t("tBadFile"));
+      }
+    };
+    r.readAsText(file);
+  }
+  function resetDesign() {
+    if (!confirm(t("cReset"))) return;
+    const keep = { title: S().title, theme: S().theme, lang: S().lang };
+    state.settings = { ...freshSettings(), ...keep };
+    $("tab-customize").innerHTML = "";
+    applyLang();
+    save();
+    toast(t("tReset"));
+  }
+
+  // ---------- Misc UI ----------
+  let toastTimer;
+  function toast(msg) {
+    const tEl = $("toast");
+    tEl.textContent = msg;
+    tEl.classList.remove("hidden");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => tEl.classList.add("hidden"), 2200);
+  }
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+  async function copy(text, msg) {
+    try { await navigator.clipboard.writeText(text); toast(msg); }
+    catch (_) { prompt("Copy:", text); }
+  }
+  function entriesChanged() {
+    highlightIdx = -1;
+    pendingRemove = -1;
+    syncTextarea();
+    draw();
+    save();
+  }
+  function closeAllModals() {
+    if (!$("modal").classList.contains("hidden")) closeModal();
+    $("leadModal").classList.add("hidden");
+    $("embedModal").classList.add("hidden");
+  }
+
+  function bind() {
+    ta.addEventListener("input", readTextarea);
+    canvas.addEventListener("click", requestSpin);
+    $("spinBtn").addEventListener("click", requestSpin);
+    $("mSpin").addEventListener("click", requestSpin);
+    document.addEventListener("keydown", (e) => {
+      const typing = /^(INPUT|TEXTAREA|SELECT|BUTTON|A)$/.test(document.activeElement?.tagName || "");
+      const modalOpen = ["modal", "leadModal", "embedModal"].some((id) => !$(id).classList.contains("hidden"));
+      if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && !modalOpen) { e.preventDefault(); requestSpin(); }
+      else if (e.code === "Space" && !typing && !modalOpen) { e.preventDefault(); requestSpin(); }
+      else if (e.key === "Escape") closeAllModals();
+    });
+
+    document.querySelectorAll(".tab").forEach((tab) => {
+      tab.onclick = () => {
+        document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("active", x === tab));
+        ["entries", "customize", "results"].forEach((n) => $("tab-" + n).classList.toggle("hidden", tab.dataset.tab !== n));
+      };
+    });
+
+    $("shuffleBtn").onclick = () => { shuffle(state.entries); entriesChanged(); };
+    $("sortBtn").onclick = () => { state.entries.sort((a, b) => a.localeCompare(b, undefined, { numeric: true })); entriesChanged(); };
+    $("uniqueBtn").onclick = () => {
+      const before = state.entries.length;
+      state.entries = [...new Set(state.entries)];
+      entriesChanged();
+      toast(t("tDupes", { n: num(before - state.entries.length) }));
+    };
+    $("clearBtn").onclick = () => {
+      if (state.entries.length && !confirm(t("cClear"))) return;
+      state.entries = [];
+      entriesChanged();
+      ta.focus();
+    };
+    $("countMinus").onclick = () => setCount(state.entries.length - 1);
+    $("countPlus").onclick = () => setCount(state.entries.length + 1);
+    $("countInput").onchange = (e) => setCount(e.target.value);
+
+    $("shareBtn").onclick = () => copy(shareUrl(false), t("tLinkCopied"));
+    $("embedBtn").onclick = openEmbed;
+    $("copyShare").onclick = () => copy($("shareUrl").value, t("tLinkCopied"));
+    $("copyEmbed").onclick = () => copy($("embedCode").value, t("tCodeCopied"));
+    $("embedClose").onclick = () => $("embedModal").classList.add("hidden");
+    $("embedModal").onclick = (e) => { if (e.target.id === "embedModal") $("embedModal").classList.add("hidden"); };
+
+    $("copyResultsBtn").onclick = () => copy(state.results.map((r) => r.name).join("\n"), t("tResultsCopied"));
+    $("clearResultsBtn").onclick = () => { state.results = []; renderResults(); save(); };
+    $("exportLeadsBtn").onclick = exportLeads;
+    $("clearLeadsBtn").onclick = () => {
+      if (!state.leads.length || !confirm(t("cClearLeads"))) return;
+      state.leads = [];
+      renderLeads();
+      save();
+    };
+
+    $("closeModal").onclick = closeModal;
+    $("modal").onclick = (e) => { if (e.target.id === "modal") closeModal(); };
+    $("removeWinner").onclick = () => { $("modal").classList.add("hidden"); removeIndex(lastWinnerIndex); };
+    $("spinAgain").onclick = requestSpin;
+
+    $("leadForm").addEventListener("submit", submitLead);
+    $("leadCancel").onclick = () => {
+      if ($("leadForm").dataset.mode === "before") $("leadModal").classList.add("hidden");
+      else $("leadForm").hidden = true;
+    };
+    $("leadModal").onclick = (e) => { if (e.target.id === "leadModal") $("leadModal").classList.add("hidden"); };
+
+    const toggleMute = () => { S().muted = !S().muted; applySettings(); save(); };
+    $("soundBtn").onclick = toggleMute;
+    $("mSound").onclick = toggleMute;
+    $("mEdit").onclick = () => $("panel").scrollIntoView({ behavior: "smooth" });
+    $("fullBtn").onclick = () => {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else $("stage").requestFullscreen?.();
+    };
+    $("themeBtn").onclick = () => { S().theme = S().theme === "dark" ? "light" : "dark"; applySettings(); save(); };
+    $("langBtn").onclick = () => { S().lang = lang() === "bn" ? "en" : "bn"; applyLang(); save(); };
+    $("wheelTitle").oninput = (e) => { S().title = e.target.value; document.title = `${S().title || t("myWheel")} – SpinPick`; save(); };
+    $("importFile").onchange = (e) => { const f = e.target.files[0]; e.target.value = ""; if (f) importWheel(f); };
+  }
+
+  // ---------- Init ----------
+  if (EMBED) document.body.classList.add("embed");
+  load();
+  syncTextarea();
+  bind();
+  applyLang();
+  document.fonts?.ready.then(draw);
+})();
+
+</script>
+</body>
+</html>

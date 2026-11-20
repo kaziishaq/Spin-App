@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SpinPick – Random Picker Wheel</title>
+  <meta name="description" content="Free spin the wheel random picker. Add names, offers or prizes, customize everything and spin to pick a winner." />
+  <meta name="theme-color" content="#0f1420" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SpinPick – Random Picker Wheel" />
+  <meta property="og:description" content="Add names, offers or prizes, customize everything and spin to pick a winner." />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;800&family=Bangers&family=Bebas+Neue&family=Fredoka:wght@500;700&family=Hind+Siliguri:wght@500;700&family=Montserrat:wght@600;800&family=Noto+Sans+Bengali:wght@500;700&family=Nunito:wght@700;900&family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    /* Site owner settings. leadWebhook: an https URL that receives WhatsApp leads as JSON (POST).
+       It is set here and not in share links, so nobody else can redirect your leads. */
+    window.SPINPICK_CONFIG = { leadWebhook: "" };
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">
+      <span class="brand-dot"></span><span>Spin<b>Pick</b></span>
+    </a>
+    <div class="top-actions">
+      <button class="lang-btn" id="langBtn" title="বাংলা / English">বাংলা</button>
+      <button class="icon-btn" id="themeBtn" data-i18n-title="themeTitle" title="Light / dark mode">◐</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage" id="stage">
+      <div class="stage-tools">
+        <div class="title-box">
+          <img id="stageLogo" class="stage-logo" alt="" hidden />
+          <input id="wheelTitle" class="wheel-title" maxlength="40" aria-label="Wheel title" />
+        </div>
+        <div>
+          <button class="icon-btn" id="soundBtn" data-i18n-title="soundTitle" title="Sound on / off">🔊</button>
+          <button class="icon-btn" id="fullBtn" data-i18n-title="fullTitle" title="Fullscreen">⛶</button>
+        </div>
+      </div>
+
+      <div class="wheel-wrap" id="wheelWrap">
+        <div class="pointer" id="pointer"></div>
+        <canvas id="wheel" width="1000" height="1000" aria-label="Spinning wheel"></canvas>
+        <button class="hub" id="spinBtn" aria-label="Spin">SPIN</button>
+      </div>
+      <p class="hint" data-i18n-html="hint"></p>
+    </section>
+
+    <aside class="panel" id="panel">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="entries"><span data-i18n="tabEntries">Entries</span> <span class="badge" id="entryCount">0</span></button>
+        <button class="tab" data-tab="customize"><span data-i18n="tabCustomize">Customize</span></button>
+        <button class="tab" data-tab="results"><span data-i18n="tabResults">Results</span> <span class="badge" id="resultCount">0</span></button>
+      </div>
+
+      <div class="tab-body" id="tab-entries">
+        <div class="toolbar">
+          <button class="chip" id="shuffleBtn">⤮ <span data-i18n="shuffle">Shuffle</span></button>
+          <button class="chip" id="sortBtn">↕ <span data-i18n="sort">Sort</span></button>
+          <button class="chip" id="uniqueBtn">◎ <span data-i18n="unique">Unique</span></button>
+          <button class="chip" id="shareBtn">🔗 <span data-i18n="share">Share</span></button>
+          <button class="chip" id="embedBtn">&lt;/&gt; <span data-i18n="embed">Embed</span></button>
+          <button class="chip danger" id="clearBtn">✕ <span data-i18n="clear">Clear</span></button>
+        </div>
+        <div class="count-row">
+          <span data-i18n="itemCount">Number of items</span>
+          <div class="stepper">
+            <button class="chip" id="countMinus" aria-label="−">−</button>
+            <input id="countInput" type="number" min="0" max="500" inputmode="numeric" aria-label="Number of items" />
+            <button class="chip" id="countPlus" aria-label="+">+</button>
+          </div>
+        </div>
+        <textarea id="entries" spellcheck="false" data-i18n-ph="entriesPh"></textarea>
+        <details class="section" open>
+          <summary data-i18n="presets">Presets</summary>
+          <div class="presets" id="presets"></div>
+        </details>
+      </div>
+
+      <div class="tab-body hidden" id="tab-customize"></div>
+
+      <div class="tab-body hidden" id="tab-results">
+        <div class="toolbar">
+          <button class="chip" id="copyResultsBtn">⧉ <span data-i18n="copy">Copy</span></button>
+          <button class="chip danger" id="clearResultsBtn">✕ <span data-i18n="clear">Clear</span></button>
+        </div>
+        <ol class="results" id="results"></ol>
+        <p class="empty" id="resultsEmpty" data-i18n="noSpins">No spins yet.</p>
+
+        <details class="section" id="leadsSection" open>
+          <summary><span data-i18n="leads">WhatsApp leads</span> (<span id="leadCount">0</span>)</summary>
+          <p class="note" data-i18n="leadsNote"></p>
+          <div class="toolbar">
+            <button class="chip" id="exportLeadsBtn">⬇ <span data-i18n="exportCsv">Export CSV</span></button>
+            <button class="chip danger" id="clearLeadsBtn">✕ <span data-i18n="clear">Clear</span></button>
+          </div>
+          <ul class="leads" id="leadsList"></ul>
+          <p class="empty" id="leadsEmpty" data-i18n="noLeads"></p>
+        </details>
+      </div>
+    </aside>
+  </main>
+
+  <!-- mobile one-hand bar -->
+  <nav class="mobile-bar" id="mobileBar">
+    <button class="icon-btn" id="mSound" data-i18n-title="soundTitle">🔊</button>
+    <button class="mobile-spin" id="mSpin">SPIN</button>
+    <button class="icon-btn" id="mEdit" data-i18n-title="editTitle">✏️</button>
+  </nav>
+
+  <!-- winner -->
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="winnerName">
+    <div class="modal-card" id="modalCard">
+      <p class="modal-label" id="winLabel"></p>
+      <h2 id="winnerName">—</h2>
+      <div id="winLeadSlot"></div>
+      <p class="lead-thanks hidden" id="leadThanks"></p>
+      <div class="modal-actions">
+        <button class="btn ghost" id="closeModal" data-i18n="close">Close</button>
+        <button class="btn ghost" id="removeWinner" data-i18n="remove">Remove</button>
+        <a class="btn wa hidden" id="claimBtn" target="_blank" rel="noopener" data-i18n="claim">Claim on WhatsApp</a>
+        <button class="btn primary" id="spinAgain" data-i18n="spinAgain">Spin again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp lead form (moved between the lead modal and the winner modal) -->
+  <div class="modal hidden" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+    <div class="modal-card" id="leadCard">
+      <form id="leadForm" class="lead-form" novalidate>
+        <h3 id="leadTitle"></h3>
+        <label class="field" id="leadNameField"><span data-i18n="leadName">Name (optional)</span>
+          <input id="leadName" type="text" autocomplete="name" maxlength="60" />
+        </label>
+        <label class="field"><span data-i18n="leadPhone">WhatsApp number</span>
+          <input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="01XXXXXXXXX" />
+        </label>
+        <label class="consent"><input type="checkbox" id="leadConsent" /><span id="leadConsentText"></span></label>
+        <p class="form-error" id="leadError" role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn ghost" id="leadCancel"></button>
+          <button type="submit" class="btn primary" id="leadSubmit"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- share & embed -->
+  <div class="modal hidden" id="embedModal" role="dialog" aria-modal="true" aria-labelledby="embedTitle">
+    <div class="modal-card left">
+      <h3 id="embedTitle" data-i18n="embedTitle">Share &amp; embed</h3>
+      <label class="field"><span data-i18n="shareLink">Share link</span>
+        <input id="shareUrl" type="text" readonly />
+      </label>
+      <button class="chip" id="copyShare">⧉ <span data-i18n="copyLink">Copy link</span></button>
+      <label class="field"><span data-i18n="embedCode">Embed code (paste into your website HTML)</span>
+        <textarea id="embedCode" class="code" readonly></textarea>
+      </label>
+      <button class="chip" id="copyEmbed">⧉ <span data-i18n="copyCode">Copy code</span></button>
+      <p class="note" data-i18n="embedNote"></p>
+      <div class="modal-actions"><button class="btn primary" id="embedClose" data-i18n="close">Close</button></div>
+    </div>
+  </div>
+
+  <div id="flash"></div>
+  <canvas id="confetti"></canvas>
+  <div class="toast hidden" id="toast"></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden />
+
+  <script src="app.js"></script>
+</body>
+</html>
